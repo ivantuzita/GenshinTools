@@ -2,6 +2,7 @@
 using GenshinTools.Application.DTOs;
 using GenshinTools.Application.Exceptions;
 using GenshinTools.Application.Services.Interfaces;
+using GenshinTools.Application.Validators;
 using GenshinTools.Domain.Interfaces;
 using GenshinTools.Domain.Models;
 
@@ -18,6 +19,13 @@ public class UserService : IUserService {
     }
 
     public async Task CreateAsync(UserDTO userDTO) {
+        UserValidator validator = new UserValidator();
+        var valResult = await validator.ValidateAsync(userDTO);
+
+        if (!valResult.IsValid) {
+            throw new BadRequestException("New User is invalid.", valResult);
+        }
+
         var newUser = _mapper.Map<User>(userDTO);
         await _repository.CreateAsync(newUser);
     }
@@ -47,6 +55,13 @@ public class UserService : IUserService {
 
         if (existingUser == null) {
             throw new NotFoundException($"User with id {userDTO.Id} has not been found.");
+        }
+
+        UserValidator validator = new UserValidator();
+        var valResult = await validator.ValidateAsync(userDTO);
+
+        if (!valResult.IsValid) {
+            throw new BadRequestException("New User is invalid.", valResult);
         }
 
         var newUser = _mapper.Map<User>(userDTO);
