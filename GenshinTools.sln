@@ -15,9 +15,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{9C49C593-1860-4347-AD09-4ACCBEB4FDD0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenshinTools.Domain", "GenshinTools.Domain\GenshinTools.Domain.csproj", "{E9571DD4-4F01-4584-BD54-3802AD115FAA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenshinTools.Domain", "GenshinTools.Domain\GenshinTools.Domain.csproj", "{E9571DD4-4F01-4584-BD54-3802AD115FAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenshinTools.Application", "GenshinTools.Application\GenshinTools.Application.csproj", "{44A3CE4C-48C7-4331-AD47-E10600854DE6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenshinTools.Application", "GenshinTools.Application\GenshinTools.Application.csproj", "{44A3CE4C-48C7-4331-AD47-E10600854DE6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenshinTools.Persistence", "GenshinTools.Persistence\GenshinTools.Persistence.csproj", "{213931F5-5A3E-4AF7-B98C-AF852E7BCEC6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E9571DD4-4F01-4584-BD54-3802AD115FAA} = {E9571DD4-4F01-4584-BD54-3802AD115FAA}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +38,10 @@ Global
 		{44A3CE4C-48C7-4331-AD47-E10600854DE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44A3CE4C-48C7-4331-AD47-E10600854DE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44A3CE4C-48C7-4331-AD47-E10600854DE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{213931F5-5A3E-4AF7-B98C-AF852E7BCEC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{213931F5-5A3E-4AF7-B98C-AF852E7BCEC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{213931F5-5A3E-4AF7-B98C-AF852E7BCEC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{213931F5-5A3E-4AF7-B98C-AF852E7BCEC6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -44,6 +53,7 @@ Global
 		{9C49C593-1860-4347-AD09-4ACCBEB4FDD0} = {E4629186-62A3-4369-AC74-805672DE361C}
 		{E9571DD4-4F01-4584-BD54-3802AD115FAA} = {E744B84D-57B6-4920-9E73-EF108CC14A8C}
 		{44A3CE4C-48C7-4331-AD47-E10600854DE6} = {E744B84D-57B6-4920-9E73-EF108CC14A8C}
+		{213931F5-5A3E-4AF7-B98C-AF852E7BCEC6} = {6664814B-BF93-48C3-934E-4A7740720F1C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {999283A4-700F-4624-ADC4-91B3205E8BF0}
