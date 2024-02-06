@@ -1,10 +1,11 @@
 ﻿using GenshinTools.Domain.Models;
 
-namespace GenshinTools.Application.Services.Interfaces;
+namespace GenshinTools.Domain.Interfaces;
 
-public interface IUserWeaponService {
-    Task AssociateWeaponToUser(int userId, int charId);
+public interface IUserWeaponRepository {
+    Task AssociateWeaponToUser(int userId, int weaponId);
     Task DisassociateWeaponToUser(int userId, int charId);
     Task<List<Weapon>> GetUserWeapons(int userId);
     Task<List<Weapon>> GetUserWeaponsFiltered(int userId);
+    Task<bool> AlreadyAssociated(int userId, int weaponId);
 }
