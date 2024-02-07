@@ -6,5 +6,5 @@ public interface IUserCharacterRepository {
     Task DisassociateCharacterToUser(int userId, int charId);
     Task<List<Character>> GetUserCharacters(int userId);
     Task<List<Character>> GetUserCharactersFiltered(int userId);
-    Task<bool> AlreadyAssociated(int userId, int weaponId);
+    Task<bool> AlreadyAssociated(int userId, int charId);
 }
