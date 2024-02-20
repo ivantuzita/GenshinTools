@@ -35,8 +35,8 @@ public class WeaponService : IWeaponService {
         return result;
     }
 
-    public async Task<WeaponDTO> GetByIdAsync(int id) {
-        var result = await GetByIdAsync(id);
+    public async Task<Weapon> GetByIdAsync(int id) {
+        var result = await _repository.GetByIdAsync(id);
         return result;
     }
 

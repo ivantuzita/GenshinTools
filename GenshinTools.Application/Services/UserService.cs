@@ -45,8 +45,8 @@ public class UserService : IUserService {
         return result;
     }
 
-    public async Task<UserDTO> GetByIdAsync(int id) {
-        var result = await GetByIdAsync(id);
+    public async Task<User> GetByIdAsync(int id) {
+        var result = await _repository.GetByIdAsync(id);
         return result;
     }
 

@@ -36,8 +36,8 @@ public class CharacterService : ICharacterService {
         return result;
     }
 
-    public async Task<CharacterDTO> GetByIdAsync(int id) {
-        var result = await GetByIdAsync(id);
+    public async Task<Character> GetByIdAsync(int id) {
+        var result = await _repository.GetByIdAsync(id);
         return result;
     }
 
