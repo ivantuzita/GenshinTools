@@ -2,7 +2,7 @@
 using GenshinTools.Domain.Models;
 using Moq;
 
-namespace GenshinTools.Application.UnitTests.Mock; 
+namespace GenshinTools.Application.UnitTests.Mock;
 public class MockCharacterRepository {
     public static Mock<IGenericRepository<Character>> GetCharactersMockRepository() {
         var chars = new List<Character> {
