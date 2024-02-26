@@ -22,7 +22,7 @@ public class UserCharacterRepository : IUserCharacterRepository
 
     public async Task AssociateCharacterToUser(int userId, int charId)
     {
-        var userChar = new {userId, charId};
+        var userChar = new UserCharacter { UserId = userId, CharacterId = charId };
         await _context.AddAsync(userChar);
         await _context.SaveChangesAsync();
     }
