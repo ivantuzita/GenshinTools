@@ -27,34 +27,34 @@ public class MockUserWeaponRepository
             new User {
                 Id = 1,
                 Username = "Test_User_1",
-                Password = "password1"
+                Password = "Valid.Password1!"
             },
             new User {
                 Id = 2,
                 Username = "test_User_2",
-                Password = "password2"
+                Password = "Valid.Password1!"
             },
             new User {
                 Id = 3,
                 Username = "test_User_3",
-                Password = "password3"
+                Password = "Valid.Password1!"
             }
         };
 
-        var chars = new List<Character> {
-            new Character {
+        var weapons = new List<Weapon> {
+            new Weapon {
                 Id = 1,
-                Name = "Test_character_1",
+                Name = "Test_weapon_1",
                 WeekDays = new List<int> {2, 5}
             },
-            new Character {
+            new Weapon {
                 Id = 2,
-                Name = "test_character_2",
+                Name = "test_weapon_2",
                 WeekDays = new List<int> {1, 3}
             },
-            new Character {
+            new Weapon {
                 Id = 3,
-                Name = "test_character_3",
+                Name = "test_weapon_3",
                 WeekDays = new List<int> {1, 3}
             }
         };
@@ -89,7 +89,7 @@ public class MockUserWeaponRepository
                     .ToList();
 
                 // not sure if this is correct or the most efficient way to do this.
-                var result = chars.Where(x => userWeaponsList.Contains(x.Id)).ToList();
+                var result = weapons.Where(x => userWeaponsList.Contains(x.Id)).ToList();
                 return Task.FromResult(result);
             });
 
@@ -98,10 +98,10 @@ public class MockUserWeaponRepository
                 var userWeaponsList = userWeapons.Where(q => q.UserId == id)
                 .Select(x => x.WeaponId)
                 .ToList();
-                var result = chars.Where(x => userWeaponsList.Contains(x.Id)).ToList();
+                var result = weapons.Where(x => userWeaponsList.Contains(x.Id)).ToList();
 
                 var filter = result.Where(y => y.WeekDays.Contains(3)).ToList();
-                return Task.FromResult(result);
+                return Task.FromResult(filter);
             });
 
         return mockRepo;

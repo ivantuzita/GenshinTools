@@ -12,17 +12,17 @@ public class MockUserRepository
             new User {
                 Id = 1,
                 Username = "Test_User_1",
-                Password = "password1"
+                Password = "Valid.Password1!"
             },
             new User {
                 Id = 2,
                 Username = "test_User_2",
-                Password = "password2"
+                Password = "Valid.Password1!"
             },
             new User {
                 Id = 3,
                 Username = "test_User_3",
-                Password = "password3"
+                Password = "Valid.Password1!"
             }
         };
 

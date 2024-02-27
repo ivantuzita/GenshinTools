@@ -5,8 +5,8 @@ namespace GenshinTools.Application.Validators;
 public class UserValidator : AbstractValidator<UserDTO> {
     public UserValidator()
     {
-        RuleFor(p => p.Name)
-            .NotEmpty().WithMessage("{Name} is required!")
+        RuleFor(p => p.Username)
+            .NotEmpty().WithMessage("{Username} is required!")
             .NotNull()
             .MaximumLength(35).WithMessage("Number of characters on {Name} cannot be bigger than 35!");
         RuleFor(p => p.Password)

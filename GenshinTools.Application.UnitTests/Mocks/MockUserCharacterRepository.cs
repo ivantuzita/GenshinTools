@@ -28,17 +28,17 @@ public class MockUserCharacterRepository
             new User {
                 Id = 1,
                 Username = "Test_User_1",
-                Password = "password1"
+                Password = "Valid.Password1!"
             },
             new User {
                 Id = 2,
                 Username = "test_User_2",
-                Password = "password2"
+                Password = "Valid.Password1!"
             },
             new User {
                 Id = 3,
                 Username = "test_User_3",
-                Password = "password3"
+                Password = "Valid.Password1!"
             }
         };
 
@@ -78,20 +78,20 @@ public class MockUserCharacterRepository
         mockRepo.Setup(r => r.DisassociateCharacterToUser(It.IsAny<int>(), It.IsAny<int>()))
         .Returns((int userid, int characterid) => {
                 var obj = userChars.Where(q => q.UserId == userid
-            && q.CharacterId == characterid).FirstOrDefault();
+                    && q.CharacterId == characterid).FirstOrDefault();
                 userChars.Remove(obj);
                 return Task.CompletedTask;
         });
 
         mockRepo.Setup(r => r.GetUserCharacters(It.IsAny<int>()))
             .Returns((int id) => {
-            var userCharsList = userChars.Where(q => q.UserId == id)
-                .Select(x => x.CharacterId)
-                .ToList();
+                var userCharsList = userChars.Where(q => q.UserId == id)
+                    .Select(x => x.CharacterId)
+                    .ToList();
 
-            // not sure if this is correct or the most efficient way to do this.
-            var result = chars.Where(x => userCharsList.Contains(x.Id)).ToList();
-            return Task.FromResult(result);
+                // not sure if this is correct or the most efficient way to do this.
+                var result = chars.Where(x => userCharsList.Contains(x.Id)).ToList();
+                return Task.FromResult(result);
         });
 
         mockRepo.Setup(r => r.GetUserCharactersFiltered(It.IsAny<int>()))
@@ -102,7 +102,7 @@ public class MockUserCharacterRepository
                 var result = chars.Where(x => userCharsList.Contains(x.Id)).ToList();
 
                 var filter = result.Where(y => y.WeekDays.Contains(3)).ToList();
-                return Task.FromResult(result);
+                return Task.FromResult(filter);
             });
 
         return mockRepo;

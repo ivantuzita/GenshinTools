@@ -39,7 +39,7 @@ public class UserServiceTests {
         user.ShouldBeOfType<User>();
         user.Id.ShouldBe(1);
         user.Username.ShouldBe("Test_User_1");
-        user.Password.ShouldBe("password1");
+        user.Password.ShouldBe("Valid.Password1!");
     }
 
     [Fact]
@@ -61,7 +61,7 @@ public class UserServiceTests {
         var userDTO = new UserDTO
         {
             Username = "Test_User_4",
-            Password = "password4"
+            Password = "Valid.Password1!"
         };
 
         await _service.CreateAsync(userDTO);
@@ -76,7 +76,7 @@ public class UserServiceTests {
     public async Task UpdateAsyncTest()
     {
         var _service = new UserService(_mockRepo.Object, _mapper);
-        var user = new UserDTO { Id = 1, Username = "Test_User_replacement", Password = "password_replacement" };
+        var user = new UserDTO { Id = 1, Username = "Test_User_replacement", Password = "Valid.Password2!" };
 
         await _service.UpdateAsync(user);
 
@@ -85,6 +85,6 @@ public class UserServiceTests {
         updated.ShouldBeOfType<User>();
         updated.Id.ShouldBe(1);
         updated.Username.ShouldBe("Test_User_replacement");
-        updated.Password.ShouldBe("password_replacement");
+        updated.Password.ShouldBe("Valid.Password2!");
     }
 }
