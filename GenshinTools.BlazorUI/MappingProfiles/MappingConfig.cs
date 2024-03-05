@@ -9,6 +9,8 @@ namespace GenshinTools.BlazorUI.MappingProfiles
         public MappingConfig()
         {
             CreateMap<CharacterDTO, CharacterVM>().ReverseMap();
+            CreateMap<UserDTO, UserVM>().ReverseMap();
+            CreateMap<WeaponDTO, WeaponVM>().ReverseMap();
         }
     }
 }

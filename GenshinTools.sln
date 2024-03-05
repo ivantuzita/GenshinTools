@@ -28,7 +28,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenshinTools.API", "Genshin
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenshinTools.Application.UnitTests", "GenshinTools.Application.UnitTests\GenshinTools.Application.UnitTests.csproj", "{43E8B044-1975-4027-B5B1-7B2895BD7217}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenshinTools.BlazorUI", "GenshinTools.BlazorUI\GenshinTools.BlazorUI.csproj", "{9ECC353A-BFA8-4FD1-876F-5C32520CFED9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenshinTools.BlazorUI", "GenshinTools.BlazorUI\GenshinTools.BlazorUI.csproj", "{9ECC353A-BFA8-4FD1-876F-5C32520CFED9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
