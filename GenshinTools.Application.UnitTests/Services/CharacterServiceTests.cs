@@ -57,7 +57,7 @@ public class CharacterServiceTests {
         var _service = new CharacterService(_mockRepo.Object, _mapper);
         var charDTO = new CharacterDTO {
             Name = "Test_character_4",
-            WeekDays = new List<int> { 0, 2 }
+            WeekDays = "0,2"
         };
 
         await _service.CreateAsync(charDTO);

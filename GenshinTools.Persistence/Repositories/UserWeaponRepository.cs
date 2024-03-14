@@ -57,7 +57,8 @@ public class UserWeaponRepository : IUserWeaponRepository
     {
         var weapons = await GetUserWeapons(userId);
         // not sure if this is correct or the most efficient way to do this.
-        var filter = weapons.Where(y => y.WeekDays.Contains(dayOfWeek())).ToList();
+        var filter = weapons.Where(y => y.WeekDays.Split(',').Select(x => int.Parse(x))
+        .Contains(dayOfWeek())).ToList();
         return filter;
     }
     private int dayOfWeek()

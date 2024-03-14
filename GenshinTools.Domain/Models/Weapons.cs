@@ -8,5 +8,5 @@ public class Weapon {
     [Required]
     public string Name { get; set; }
     public string PictureURL { get; set; }
-    public List<int> WeekDays { get; set; }
+    public string WeekDays { get; set; }
 }

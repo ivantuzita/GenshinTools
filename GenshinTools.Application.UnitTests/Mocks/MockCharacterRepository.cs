@@ -9,17 +9,17 @@ public class MockCharacterRepository {
             new Character {
                 Id = 1,
                 Name = "Test_character_1",
-                WeekDays = new List<int> {2, 5}
+                WeekDays = "2,5"
             },
             new Character {
                 Id = 2,
                 Name = "test_character_2",
-                WeekDays = new List<int> {1, 3}
+                WeekDays = "1,3"
             },
             new Character {
                 Id = 3,
                 Name = "test_character_3",
-                WeekDays = new List<int> {1, 3}
+                WeekDays = "1,3"
             }
         };
 

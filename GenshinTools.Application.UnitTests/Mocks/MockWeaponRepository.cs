@@ -12,17 +12,17 @@ public class MockWeaponRepository
             new Weapon {
                 Id = 1,
                 Name = "Test_weapon_1",
-                WeekDays = new List<int> {2, 5}
+                WeekDays = "2,5"
             },
             new Weapon {
                 Id = 2,
                 Name = "test_weapon_2",
-                WeekDays = new List<int> {1, 3}
+                WeekDays = "1,3"
             },
             new Weapon {
                 Id = 3,
                 Name = "test_weapon_3",
-                WeekDays = new List<int> {1, 3}
+                WeekDays = "1,3"
             }
         };
 

@@ -63,7 +63,7 @@ public class WeaponServiceTests {
         var weaponDTO = new WeaponDTO
         {
             Name = "Test_Weapon_4",
-            WeekDays = new List<int> { 0, 2 }
+            WeekDays = "0,2"
         };
 
         await _service.CreateAsync(weaponDTO);

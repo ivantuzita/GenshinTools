@@ -45,17 +45,17 @@ public class MockUserWeaponRepository
             new Weapon {
                 Id = 1,
                 Name = "Test_weapon_1",
-                WeekDays = new List<int> {2, 5}
+                WeekDays = "2,5"
             },
             new Weapon {
                 Id = 2,
                 Name = "test_weapon_2",
-                WeekDays = new List<int> {1, 3}
+                WeekDays = "1,3"
             },
             new Weapon {
                 Id = 3,
                 Name = "test_weapon_3",
-                WeekDays = new List<int> {1, 3}
+                WeekDays = "1,3"
             }
         };
 
@@ -100,7 +100,7 @@ public class MockUserWeaponRepository
                 .ToList();
                 var result = weapons.Where(x => userWeaponsList.Contains(x.Id)).ToList();
 
-                var filter = result.Where(y => y.WeekDays.Contains(3)).ToList();
+                var filter = result.Where(y => y.WeekDays.Contains("3")).ToList();
                 return Task.FromResult(filter);
             });
 

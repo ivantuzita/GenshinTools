@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GenshinTools.Persistence.Migrations
 {
     [DbContext(typeof(GenshinDatabaseContext))]
-    [Migration("20240213141351_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20240314170835_initial-migration")]
+    partial class initialmigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
