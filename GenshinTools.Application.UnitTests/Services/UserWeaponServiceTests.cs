@@ -3,6 +3,7 @@ using GenshinTools.Application.UnitTests.Mock;
 using GenshinTools.Application.UnitTests.Mocks;
 using GenshinTools.Domain.Interfaces;
 using GenshinTools.Domain.Models;
+using GenshinTools.Domain.Models.Identity;
 using Moq;
 using Shouldly;
 
@@ -12,7 +13,7 @@ public class UserWeaponServiceTests {
 
     private readonly Mock<IUserWeaponRepository> _mockRepo;
     private readonly Mock<IGenericRepository<Weapon>> _weaponMockRepo;
-    private readonly Mock<IGenericRepository<User>> _userMockRepo;
+    private readonly Mock<IGenericRepository<AuthRequest>> _userMockRepo;
 
     public UserWeaponServiceTests() {
         _mockRepo = MockUserWeaponRepository.GetUserWeaponMockRepository();

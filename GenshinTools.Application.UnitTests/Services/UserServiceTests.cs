@@ -4,14 +4,14 @@ using GenshinTools.Application.MappingProfiles;
 using GenshinTools.Application.Services;
 using GenshinTools.Application.UnitTests.Mock;
 using GenshinTools.Domain.Interfaces;
-using GenshinTools.Domain.Models;
+using GenshinTools.Domain.Models.Identity;
 using Moq;
 using Shouldly;
 
 namespace GenshinTools.Application.UnitTests.Services;
 
 public class UserServiceTests {
-    private readonly Mock<IGenericRepository<User>> _mockRepo;
+    private readonly Mock<IGenericRepository<AuthRequest>> _mockRepo;
     private IMapper _mapper;
     public UserServiceTests()
     {
@@ -26,7 +26,7 @@ public class UserServiceTests {
         var _service = new UserService(_mockRepo.Object, _mapper);
         var users = await _service.GetAllAsync();
 
-        users.ShouldBeOfType<List<User>>();
+        users.ShouldBeOfType<List<AuthRequest>>();
         users.Count.ShouldBe(3);
     }
 
@@ -36,7 +36,7 @@ public class UserServiceTests {
         var _service = new UserService(_mockRepo.Object, _mapper);
         var user = await _service.GetByIdAsync(1);
 
-        user.ShouldBeOfType<User>();
+        user.ShouldBeOfType<AuthRequest>();
         user.Id.ShouldBe(1);
         user.Username.ShouldBe("Test_User_1");
         user.Password.ShouldBe("Valid.Password1!");
@@ -68,7 +68,7 @@ public class UserServiceTests {
 
         var users = await _service.GetAllAsync();
 
-        users.ShouldBeOfType<List<User>>();
+        users.ShouldBeOfType<List<AuthRequest>>();
         users.Count.ShouldBe(4);
     }
 
@@ -82,7 +82,7 @@ public class UserServiceTests {
 
         var updated = await _service.GetByIdAsync(1);
 
-        updated.ShouldBeOfType<User>();
+        updated.ShouldBeOfType<AuthRequest>();
         updated.Id.ShouldBe(1);
         updated.Username.ShouldBe("Test_User_replacement");
         updated.Password.ShouldBe("Valid.Password2!");

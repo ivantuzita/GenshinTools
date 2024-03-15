@@ -18,6 +18,7 @@
   <ItemGroup>
     <ProjectReference Include="..\GenshinTools.Application\GenshinTools.Application.csproj" />
     <ProjectReference Include="..\GenshinTools.Domain\GenshinTools.Domain.csproj" />
+    <ProjectReference Include="..\GenshinTools.Identity\GenshinTools.Identity.csproj" />
     <ProjectReference Include="..\GenshinTools.Persistence\GenshinTools.Persistence.csproj" />
   </ItemGroup>
 

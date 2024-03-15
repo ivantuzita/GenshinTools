@@ -1,5 +1,6 @@
 ﻿using GenshinTools.Domain.Interfaces;
 using GenshinTools.Domain.Models;
+using GenshinTools.Domain.Models.Identity;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using System;
@@ -24,18 +25,18 @@ public class MockUserCharacterRepository
             }
         };
 
-        var users = new List<User> {
-            new User {
+        var users = new List<AuthRequest> {
+            new AuthRequest {
                 Id = 1,
                 Username = "Test_User_1",
                 Password = "Valid.Password1!"
             },
-            new User {
+            new AuthRequest {
                 Id = 2,
                 Username = "test_User_2",
                 Password = "Valid.Password1!"
             },
-            new User {
+            new AuthRequest {
                 Id = 3,
                 Username = "test_User_3",
                 Password = "Valid.Password1!"

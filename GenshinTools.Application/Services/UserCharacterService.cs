@@ -3,17 +3,18 @@ using GenshinTools.Application.Exceptions;
 using GenshinTools.Application.Services.Interfaces;
 using GenshinTools.Domain.Interfaces;
 using GenshinTools.Domain.Models;
+using GenshinTools.Domain.Models.Identity;
 
-namespace GenshinTools.Application.Services; 
+namespace GenshinTools.Application.Services;
 public class UserCharacterService : IUserCharacterService {
 
     private readonly IUserCharacterRepository _repository;
     private readonly IGenericRepository<Character> _charRepo;
-    private readonly IGenericRepository<User> _userRepo;
+    private readonly IGenericRepository<AuthRequest> _userRepo;
 
     public UserCharacterService(IUserCharacterRepository repository,
         IGenericRepository<Character> charRepo,
-        IGenericRepository<User> userRepo)
+        IGenericRepository<AuthRequest> userRepo)
     {
         _repository = repository;
         _userRepo = userRepo;

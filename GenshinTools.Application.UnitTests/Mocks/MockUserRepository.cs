@@ -1,37 +1,37 @@
 ﻿using GenshinTools.Domain.Interfaces;
-using GenshinTools.Domain.Models;
+using GenshinTools.Domain.Models.Identity;
 using Moq;
 
 namespace GenshinTools.Application.UnitTests.Mock;
 
 public class MockUserRepository
 {
-    public static Mock<IGenericRepository<User>> GetUserMockRepository()
+    public static Mock<IGenericRepository<AuthRequest>> GetUserMockRepository()
     {
-        var users = new List<User> {
-            new User {
+        var users = new List<AuthRequest> {
+            new AuthRequest {
                 Id = 1,
                 Username = "Test_User_1",
                 Password = "Valid.Password1!"
             },
-            new User {
+            new AuthRequest {
                 Id = 2,
                 Username = "test_User_2",
                 Password = "Valid.Password1!"
             },
-            new User {
+            new AuthRequest {
                 Id = 3,
                 Username = "test_User_3",
                 Password = "Valid.Password1!"
             }
         };
 
-        var mockRepo = new Mock<IGenericRepository<User>>();
+        var mockRepo = new Mock<IGenericRepository<AuthRequest>>();
 
         mockRepo.Setup(r => r.GetAllAsync()).ReturnsAsync(users);
 
-        mockRepo.Setup(r => r.CreateAsync(It.IsAny<User>()))
-            .Returns((User user) => {
+        mockRepo.Setup(r => r.CreateAsync(It.IsAny<AuthRequest>()))
+            .Returns((AuthRequest user) => {
                 users.Add(user);
                 return Task.CompletedTask;
             });
@@ -42,8 +42,8 @@ public class MockUserRepository
                 return Task.FromResult(user);
             });
 
-        mockRepo.Setup(r => r.UpdateAsync(It.IsAny<User>()))
-            .Returns((User user) => {
+        mockRepo.Setup(r => r.UpdateAsync(It.IsAny<AuthRequest>()))
+            .Returns((AuthRequest user) => {
                 //find object
                 var obj = users.FirstOrDefault(u => u.Id == user.Id);
                 //updating object...

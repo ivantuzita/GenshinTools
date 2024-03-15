@@ -3,17 +3,18 @@ using GenshinTools.Application.Exceptions;
 using GenshinTools.Application.Services.Interfaces;
 using GenshinTools.Domain.Interfaces;
 using GenshinTools.Domain.Models;
+using GenshinTools.Domain.Models.Identity;
 
-namespace GenshinTools.Application.Services; 
+namespace GenshinTools.Application.Services;
 public class UserWeaponService : IUserWeaponService {
 
     private readonly IUserWeaponRepository _repository;
     private readonly IGenericRepository<Weapon> _weaponRepo;
-    private readonly IGenericRepository<User> _userRepo;
+    private readonly IGenericRepository<AuthRequest> _userRepo;
 
     public UserWeaponService(IUserWeaponRepository repository,
         IGenericRepository<Weapon> weaponRepo,
-        IGenericRepository<User> userRepo)
+        IGenericRepository<AuthRequest> userRepo)
     {
         _weaponRepo = weaponRepo;
         _userRepo = userRepo;

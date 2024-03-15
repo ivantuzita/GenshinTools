@@ -10,7 +10,6 @@ public static class ApplicationServiceRegistration {
 
         services.AddScoped<ICharacterService, CharacterService>();
         services.AddScoped<IUserCharacterService, UserCharacterService>();
-        services.AddScoped<IUserService, UserService>();
         services.AddScoped<IUserWeaponService, UserWeaponService>();
         services.AddScoped<IWeaponService, WeaponService>();
 
