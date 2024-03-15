@@ -18,15 +18,15 @@ public class UsersController : ControllerBase {
     // GET: api/<UsersController>
     [HttpGet]
     public async Task<ActionResult<List<User>>> GetAllAsync() {
-        await _userService.GetAllAsync();
-        return Ok();
+        var result = await _userService.GetAllAsync();
+        return Ok(result);
     }
 
     // GET api/<UsersController>/5
     [HttpGet("{id}")]
     public async Task<ActionResult<UserDTO>> GetByIdAsync(int id) {
-        await _userService.GetByIdAsync(id);
-        return Ok();
+        var result = await _userService.GetByIdAsync(id);
+        return Ok(result);
     }
 
     // POST api/<UsersController>

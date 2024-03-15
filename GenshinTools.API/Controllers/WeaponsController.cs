@@ -21,15 +21,15 @@ public class WeaponsController : ControllerBase {
     // GET: api/<WeaponsController>
     [HttpGet]
     public async Task<ActionResult<List<Weapon>>> GetAllAsync() {
-        await _weaponService.GetAllAsync();
-        return Ok();
+        var result = await _weaponService.GetAllAsync();
+        return Ok(result);
     }
 
     // GET api/<WeaponsController>/5
     [HttpGet("{id}")]
-    public async Task<ActionResult<WeaponDTO>> GetByIdAsync(int id) {
-        await _weaponService.GetByIdAsync(id);
-        return Ok();
+    public async Task<ActionResult<Weapon>> GetByIdAsync(int id) {
+        var result = await _weaponService.GetByIdAsync(id);
+        return Ok(result);
     }
 
     // POST api/<WeaponsController>

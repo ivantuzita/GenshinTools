@@ -18,16 +18,16 @@ public class CharactersController : ControllerBase {
 
     // GET: api/<CharactersController>
     [HttpGet]
-    public async Task<ActionResult<List<CharacterDTO>>> GetAllAsync() {
-        await _characterService.GetAllAsync();
-        return Ok();
+    public async Task<ActionResult<List<Character>>> GetAllAsync() {
+        var result = await _characterService.GetAllAsync();
+        return Ok(result);
     }
 
     // GET api/<CharactersController>/5
     [HttpGet("{id}")]
     public async Task<ActionResult<Character>> GetByIdAsync(int id) {
-        await _characterService.GetByIdAsync(id);
-        return Ok();
+        var result = await _characterService.GetByIdAsync(id);
+        return Ok(result);
     }
 
     // POST api/<CharactersController>
