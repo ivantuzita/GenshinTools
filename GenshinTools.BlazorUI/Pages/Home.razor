@@ -6,8 +6,8 @@
 
 <AuthorizeView>
     <Authorized>
-        <button @onclick="Logout">Logout</button>
-        <button @onclick="GoToCharacters">Characters</button>
+        <button class="btn btn-warning" @onclick="Logout">Logout</button>
+        <button class="btn btn-primary" @onclick="GoToCharacters">Characters</button>
     </Authorized>
     <NotAuthorized>
         <button @onclick="GoToLogin">Login</button>

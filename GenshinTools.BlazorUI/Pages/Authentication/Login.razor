@@ -17,12 +17,12 @@
 
             <div>
                 <label>Username</label>
-                <InputText id="username" @bind-Value=@Model.Username></InputText>
+                <InputText id="username" class="form-label mt-4" @bind-Value=@Model.Username></InputText>
                 <ValidationMessage For="@(() => Model.Username)"/>
             </div>
             <div>
                 <label>Password</label>
-                <InputText type="password" id="password" @bind-Value=@Model.Password></InputText>
+                <InputText type="password" id="password" class="form-label mt-4" @bind-Value=@Model.Password></InputText>
                 <ValidationMessage For="@(() => Model.Password)" />
             </div>
             <div>
