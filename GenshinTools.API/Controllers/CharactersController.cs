@@ -1,12 +1,14 @@
 ﻿using GenshinTools.Application.DTOs;
 using GenshinTools.Application.Services.Interfaces;
 using GenshinTools.Domain.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GenshinTools.API.Controllers; 
 
 [Route("api/[controller]")]
 [ApiController]
+[Authorize]
 public class CharactersController : ControllerBase {
 
     private readonly ICharacterService _characterService;

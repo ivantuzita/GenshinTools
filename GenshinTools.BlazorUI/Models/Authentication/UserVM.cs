@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace GenshinTools.BlazorUI.Models;
-public class UserVM {
-    [Required]
-    public int Id { get; set; }
+namespace GenshinTools.BlazorUI.Models.Authentication;
+
+public class UserVM
+{
     [Required]
     public string Username { get; set; }
     [Required]

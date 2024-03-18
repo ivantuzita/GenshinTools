@@ -30,7 +30,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenshinTools.Application.Un
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenshinTools.BlazorUI", "GenshinTools.BlazorUI\GenshinTools.BlazorUI.csproj", "{9ECC353A-BFA8-4FD1-876F-5C32520CFED9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenshinTools.Identity", "GenshinTools.Identity\GenshinTools.Identity.csproj", "{90EB2445-28D3-480C-BE52-C425AC9F055F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenshinTools.Identity", "GenshinTools.Identity\GenshinTools.Identity.csproj", "{90EB2445-28D3-480C-BE52-C425AC9F055F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
