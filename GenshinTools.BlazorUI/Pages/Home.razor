@@ -1,6 +1,27 @@
 ﻿@page "/"
+@using GenshinTools.BlazorUI.Pages.Components;
+@using GenshinTools.BlazorUI.Shared;
 
 <PageTitle>Home</PageTitle>
 
-@UserId
-
+<AuthorizeView>
+    <Authorized>
+        <div class="container">
+            @if (Characters == null) {
+                <p>Loading Data...</p>
+            }
+            else {
+                <div class="row">
+                @foreach (var character in Characters) {
+                    <div class="col" style="min-width: 25%; max-width: 25%">
+                        <CharCard Name="@character.Name" PictureURL="@character.PictureURL" />
+                    </div>
+                }
+                </div>
+            }
+        </div>
+    </Authorized>
+    <NotAuthorized>
+        <RedirectToLogin />
+    </NotAuthorized>
+</AuthorizeView>

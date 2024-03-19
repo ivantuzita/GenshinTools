@@ -7,4 +7,5 @@ public class CharacterVM {
     [Required]
     public string Name { get; set; }
     public string WeekDays { get; set; }
+    public string PictureURL { get; set; }
 }
