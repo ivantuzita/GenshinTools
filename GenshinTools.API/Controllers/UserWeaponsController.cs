@@ -15,29 +15,29 @@ public class UserWeaponsController : ControllerBase {
 
     // POST: api/<UserWeaponsController>/link/1/2
     [HttpPost("link/{userId}/{weaponId}")]
-    public async Task<ActionResult> AssociateWeaponToUser([FromRoute] int userId, [FromRoute] int weaponId) {
+    public async Task<ActionResult> AssociateWeaponToUser([FromRoute] string userId, [FromRoute] int weaponId) {
         await _userWeaponService.AssociateWeaponToUser(userId, weaponId);
         return Ok();
     }
 
     // POST: api/<UserWeaponsController>/unlink/1/2
     [HttpPost("unlink/{userId}/{weaponId}")]
-    public async Task<ActionResult> DisassociateWeaponToUser([FromRoute] int userId, [FromRoute] int weaponId) {
+    public async Task<ActionResult> DisassociateWeaponToUser([FromRoute] string userId, [FromRoute] int weaponId) {
         await _userWeaponService.DisassociateWeaponToUser(userId, weaponId);
         return Ok();
     }
 
     // GET api/<UserWeaponsController>/2
     [HttpGet("{userId}")]
-    public async Task<ActionResult<List<Weapon>>> GetUserWeapons([FromRoute] int userId) {
-        await _userWeaponService.GetUserWeapons(userId);
-        return Ok();
+    public async Task<ActionResult<List<Weapon>>> GetUserWeapons([FromRoute] string userId) {
+        var chars = await _userWeaponService.GetUserWeapons(userId);
+        return Ok(chars);
     }
 
     // GET api/<UserWeaponsController>/filter/2
     [HttpGet("filter/{userId}")]
-    public async Task<ActionResult<List<Weapon>>> GetUserWeaponsFiltered([FromRoute] int userId) {
-        await _userWeaponService.GetUserWeaponsFiltered(userId);
-        return Ok();
+    public async Task<ActionResult<List<Weapon>>> GetUserWeaponsFiltered([FromRoute] string userId) {
+        var chars = await _userWeaponService.GetUserWeaponsFiltered(userId);
+        return Ok(chars);
     }
 }

@@ -15,29 +15,29 @@ public class UserCharactersController : ControllerBase {
 
     // POST: api/<UserCharactersController>/link/1/2
     [HttpPost("link/{userId}/{charId}")]
-    public async Task<ActionResult> AssociateCharacterToUser([FromRoute] int userId, [FromRoute] int charId) {
+    public async Task<ActionResult> AssociateCharacterToUser([FromRoute] string userId, [FromRoute] int charId) {
         await _userCharacterService.AssociateCharacterToUser(userId, charId);
         return Ok();
     }
 
     // POST: api/<UserCharactersController>/unlink/1/2
     [HttpPost("unlink/{userId}/{charId}")]
-    public async Task<ActionResult> DisassociateCharacterToUser([FromRoute] int userId, [FromRoute] int charId) {
+    public async Task<ActionResult> DisassociateCharacterToUser([FromRoute] string userId, [FromRoute] int charId) {
         await _userCharacterService.DisassociateCharacterToUser(userId, charId);
         return Ok();
     }
 
     // GET api/<UserCharactersController>/2
     [HttpGet("{userId}")]
-    public async Task<ActionResult<List<Character>>> GetUserCharacters([FromRoute] int userId) {
-        await _userCharacterService.GetUserCharacters(userId);
-        return Ok();
+    public async Task<ActionResult<List<Character>>> GetUserCharacters([FromRoute] string userId) {
+        var chars = await _userCharacterService.GetUserCharacters(userId);
+        return Ok(chars);
     }
 
     // GET api/<UserCharactersController>/filter/2
     [HttpGet("filter/{userId}")]
-    public async Task<ActionResult<List<Character>>> GetUserCharactersFiltered([FromRoute] int userId) {
-        await _userCharacterService.GetUserCharactersFiltered(userId);
-        return Ok();
+    public async Task<ActionResult<List<Character>>> GetUserCharactersFiltered([FromRoute] string userId) {
+        var chars = await _userCharacterService.GetUserCharactersFiltered(userId);
+        return Ok(chars);
     }
 }

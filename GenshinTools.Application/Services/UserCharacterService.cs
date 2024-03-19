@@ -10,26 +10,17 @@ public class UserCharacterService : IUserCharacterService {
 
     private readonly IUserCharacterRepository _repository;
     private readonly IGenericRepository<Character> _charRepo;
-    private readonly IGenericRepository<AuthRequest> _userRepo;
 
     public UserCharacterService(IUserCharacterRepository repository,
         IGenericRepository<Character> charRepo,
         IGenericRepository<AuthRequest> userRepo)
     {
         _repository = repository;
-        _userRepo = userRepo;
         _charRepo = charRepo;
     }
 
-    public async Task AssociateCharacterToUser(int userId, int charId)
+    public async Task AssociateCharacterToUser(string userId, int charId)
     {
-        var userExists = _userRepo.GetByIdAsync(userId);
-
-        if (userExists == null)
-        {
-            throw new NotFoundException($"User with id {userId} has not been found.");
-        }
-
         var charExists = _charRepo.GetByIdAsync(charId);
 
         if (charExists == null)
@@ -47,15 +38,8 @@ public class UserCharacterService : IUserCharacterService {
         await _repository.AssociateCharacterToUser(userId, charId);
     }
 
-    public async Task DisassociateCharacterToUser(int userId, int charId)
+    public async Task DisassociateCharacterToUser(string userId, int charId)
     {
-        var userExists = _userRepo.GetByIdAsync(userId);
-
-        if (userExists == null)
-        {
-            throw new NotFoundException($"User with id {userId} has not been found.");
-        }
-
         var charExists = _charRepo.GetByIdAsync(charId);
 
         if (charExists == null)
@@ -73,27 +57,13 @@ public class UserCharacterService : IUserCharacterService {
         await _repository.DisassociateCharacterToUser(userId, charId);
     }
 
-    public async Task<List<Character>> GetUserCharacters(int userId)
+    public async Task<List<Character>> GetUserCharacters(string userId)
     {
-        var userExists = _userRepo.GetByIdAsync(userId);
-
-        if (userExists == null)
-        {
-            throw new NotFoundException($"User with id {userId} has not been found.");
-        }
-
         return await _repository.GetUserCharacters(userId);
     }
 
-    public async Task<List<Character>> GetUserCharactersFiltered(int userId)
+    public async Task<List<Character>> GetUserCharactersFiltered(string userId)
     {
-        var userExists = _userRepo.GetByIdAsync(userId);
-
-        if (userExists == null)
-        {
-            throw new NotFoundException($"User with id {userId} has not been found.");
-        }
-
         return await _repository.GetUserCharactersFiltered(userId);
     }
 }

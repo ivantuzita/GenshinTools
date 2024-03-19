@@ -15,19 +15,19 @@ public class UserWeaponRepository : IUserWeaponRepository
         _context = context;
     }
 
-    public async Task<bool> AlreadyAssociated(int userId, int weaponId)
+    public async Task<bool> AlreadyAssociated(string userId, int weaponId)
     {
         return await _context.UserWeapons.AnyAsync(x => x.UserId == userId && x.WeaponId == weaponId);
     }
 
-    public async Task AssociateWeaponToUser(int userId, int weaponId)
+    public async Task AssociateWeaponToUser(string userId, int weaponId)
     {
         var userWeapon = new { userId, weaponId };
         await _context.AddAsync(userWeapon);
         await _context.SaveChangesAsync();
     }
 
-    public async Task DisassociateWeaponToUser(int userId, int weaponId)
+    public async Task DisassociateWeaponToUser(string userId, int weaponId)
     {
         // not sure if most efficient way
         var obj = await _context.UserWeapons.Where(q => q.UserId == userId
@@ -40,7 +40,7 @@ public class UserWeaponRepository : IUserWeaponRepository
         }
     }
 
-    public async Task<List<Weapon>> GetUserWeapons(int userId)
+    public async Task<List<Weapon>> GetUserWeapons(string userId)
     {
         var userWeapons = await _context.UserWeapons
             .Where(q => q.UserId == userId)
@@ -53,7 +53,7 @@ public class UserWeaponRepository : IUserWeaponRepository
         return weapons;
     }
 
-    public async Task<List<Weapon>> GetUserWeaponsFiltered(int userId)
+    public async Task<List<Weapon>> GetUserWeaponsFiltered(string userId)
     {
         var weapons = await GetUserWeapons(userId);
         // not sure if this is correct or the most efficient way to do this.

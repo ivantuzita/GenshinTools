@@ -11,7 +11,7 @@ public class AuthenticationService : BaseHttpService, IAuthenticationService
     private readonly AuthenticationStateProvider _authStateProvider;
     public AuthenticationService(IClient client, ILocalStorageService localStorage, AuthenticationStateProvider authStateProvider) : base(client, localStorage)
     {
-            _authStateProvider = authStateProvider;
+        _authStateProvider = authStateProvider;
     }
 
     public async Task<bool> AuthenticateAsync(string username, string password)
@@ -40,7 +40,6 @@ public class AuthenticationService : BaseHttpService, IAuthenticationService
         {
             return false;
         }
-        
     }
 
     public async Task Logout()
@@ -51,6 +50,7 @@ public class AuthenticationService : BaseHttpService, IAuthenticationService
 
     public async Task<bool> RegisterAsync(string username, string password)
     {
+        await AddBearerToken();
         try
         {
             RegistrationRequest regRequest = new RegistrationRequest
@@ -70,6 +70,5 @@ public class AuthenticationService : BaseHttpService, IAuthenticationService
         {
             return false;
         }
-        
     }
 }

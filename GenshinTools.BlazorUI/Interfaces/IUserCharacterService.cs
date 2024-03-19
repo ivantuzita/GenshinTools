@@ -3,8 +3,8 @@
 namespace GenshinTools.BlazorUI.Interfaces;
 
 public interface IUserCharacterService {
-    Task AssociateCharacterToUser(int userId, int charId);
-    Task DisassociateCharacterToUser(int userId, int charId);
-    Task<List<CharacterVM>> GetUserCharacters(int userId);
-    Task<List<CharacterVM>> GetUserCharactersFiltered(int userId);
+    Task AssociateCharacterToUser(string userId, int charId);
+    Task DisassociateCharacterToUser(string userId, int charId);
+    Task<List<CharacterVM>> GetUserCharacters(string userId);
+    Task<List<CharacterVM>> GetUserCharactersFiltered(string userId);
 }

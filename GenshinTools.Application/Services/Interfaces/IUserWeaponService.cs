@@ -3,8 +3,8 @@
 namespace GenshinTools.Application.Services.Interfaces;
 
 public interface IUserWeaponService {
-    Task AssociateWeaponToUser(int userId, int charId);
-    Task DisassociateWeaponToUser(int userId, int charId);
-    Task<List<Weapon>> GetUserWeapons(int userId);
-    Task<List<Weapon>> GetUserWeaponsFiltered(int userId);
+    Task AssociateWeaponToUser(string userId, int charId);
+    Task DisassociateWeaponToUser(string userId, int charId);
+    Task<List<Weapon>> GetUserWeapons(string userId);
+    Task<List<Weapon>> GetUserWeaponsFiltered(string userId);
 }

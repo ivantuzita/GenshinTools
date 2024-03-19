@@ -1,5 +1,6 @@
 ﻿using Blazored.LocalStorage;
 using Microsoft.AspNetCore.Components.Authorization;
+using Newtonsoft.Json.Linq;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 
@@ -64,6 +65,16 @@ public class ApiAuthenticationStateProvider : AuthenticationStateProvider
         var authState = Task.FromResult(new AuthenticationState(nobody));
         //notifying blazor that authstate has changed
         NotifyAuthenticationStateChanged(authState);
+    }
+
+    //is this even secure?
+    public async Task<string> GetId() {
+        //getting token from local storage
+        var savedToken = await _localStorage.GetItemAsync<string>("token");
+        //reading token using handler
+        var tokenContent = jwtSecurityTokenHandler.ReadJwtToken(savedToken);
+        //returning the value of claim 'uid', which is the userId in the api calls
+        return tokenContent.Claims.First(claim => claim.Type == "uid").Value;
     }
 
     private async Task<List<Claim>> GetClaims() {

@@ -95,7 +95,12 @@ public class AuthService : IAuthService
         }
         else
         {
-            throw new BadRequestException($"{result.Errors}");
+            StringBuilder str = new StringBuilder();
+            foreach (var err in result.Errors) {
+                str.AppendFormat("•{0}\n", err.Description);
+            }
+
+            throw new BadRequestException($"{str}");
         }
     }
 }

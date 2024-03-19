@@ -1,6 +1,8 @@
 using GenshinTools.BlazorUI.Interfaces;
 using GenshinTools.BlazorUI.Models;
+using GenshinTools.BlazorUI.Providers;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Authorization;
 
 namespace GenshinTools.BlazorUI.Pages.Characters
 {
@@ -8,16 +10,19 @@ namespace GenshinTools.BlazorUI.Pages.Characters
     {
         [Inject]
         public NavigationManager NavigationManager { get; set; }
-
         [Inject]
-        public ICharacterService CharacterService { get; set; }
+        private AuthenticationStateProvider AuthenticationStateProvider { get; set; }
+        [Inject]
+        public IUserCharacterService UserCharacterService { get; set; }
 
         public List<CharacterVM> Characters { get; private set; }
         public string Message { get; set; } = string.Empty;
 
         protected override async Task OnInitializedAsync()
         {
-            Characters = await CharacterService.GetAllCharactersAsync();
+            var userId = await ((ApiAuthenticationStateProvider)AuthenticationStateProvider)
+            .GetId();
+            Characters = await UserCharacterService.GetUserCharacters(userId);
         }
     }
 

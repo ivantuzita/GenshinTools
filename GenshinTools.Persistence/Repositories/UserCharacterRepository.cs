@@ -15,19 +15,19 @@ public class UserCharacterRepository : IUserCharacterRepository
         _context = context;
     }
 
-    public async Task<bool> AlreadyAssociated(int userId, int charId)
+    public async Task<bool> AlreadyAssociated(string userId, int charId)
     {
         return await _context.UserCharacters.AnyAsync(x => x.UserId == userId && x.CharacterId == charId);
     }
 
-    public async Task AssociateCharacterToUser(int userId, int charId)
+    public async Task AssociateCharacterToUser(string userId, int charId)
     {
         var userChar = new UserCharacter { UserId = userId, CharacterId = charId };
         await _context.AddAsync(userChar);
         await _context.SaveChangesAsync();
     }
 
-    public async Task DisassociateCharacterToUser(int userId, int charId)
+    public async Task DisassociateCharacterToUser(string userId, int charId)
     {
         // not sure if most efficient way
         var obj = await _context.UserCharacters.Where(q => q.UserId == userId
@@ -40,7 +40,7 @@ public class UserCharacterRepository : IUserCharacterRepository
         }
     }
 
-    public async Task<List<Character>> GetUserCharacters(int userId)
+    public async Task<List<Character>> GetUserCharacters(string userId)
     {
         var userChars = await _context.UserCharacters
             .Where(q => q.UserId == userId)
@@ -53,7 +53,7 @@ public class UserCharacterRepository : IUserCharacterRepository
         return chars;
     }
 
-    public async Task<List<Character>> GetUserCharactersFiltered(int userId)
+    public async Task<List<Character>> GetUserCharactersFiltered(string userId)
     {
         var chars = await GetUserCharacters(userId);
         // not sure if this is correct or the most efficient way to do this.

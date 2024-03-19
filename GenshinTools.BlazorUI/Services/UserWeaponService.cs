@@ -13,23 +13,23 @@ namespace GenshinTools.BlazorUI.Services {
             _mapper = mapper;
     }
 
-        public async Task AssociateWeaponToUser(int userId, int weaponId) {
+        public async Task AssociateWeaponToUser(string userId, int weaponId) {
             await AddBearerToken();
             await _client.Link2Async(userId, weaponId);
         }
 
-        public async Task DisassociateWeaponToUser(int userId, int weaponId) {
+        public async Task DisassociateWeaponToUser(string userId, int weaponId) {
             await AddBearerToken();
             await _client.Unlink2Async(userId, weaponId);
         }
 
-        public async Task<List<WeaponVM>> GetUserWeapons(int userId) {
+        public async Task<List<WeaponVM>> GetUserWeapons(string userId) {
             await AddBearerToken();
             var userWeapons = await _client.UserWeaponsAsync(userId);
             return _mapper.Map<List<WeaponVM>>(userWeapons);
         }
 
-        public async Task<List<WeaponVM>> GetUserWeaponsFiltered(int userId) {
+        public async Task<List<WeaponVM>> GetUserWeaponsFiltered(string userId) {
             await AddBearerToken();
             var userWeapons = await _client.Filter2Async(userId);
             return _mapper.Map<List<WeaponVM>>(userWeapons);

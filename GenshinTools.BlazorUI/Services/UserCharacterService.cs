@@ -13,23 +13,23 @@ namespace GenshinTools.BlazorUI.Services {
             _mapper = mapper;
         }
 
-        public async Task AssociateCharacterToUser(int userId, int charId) {
+        public async Task AssociateCharacterToUser(string userId, int charId) {
             await AddBearerToken();
             await _client.LinkAsync(userId, charId);
         }
 
-        public async Task DisassociateCharacterToUser(int userId, int charId) {
+        public async Task DisassociateCharacterToUser(string userId, int charId) {
             await AddBearerToken();
             await _client.UnlinkAsync(userId, charId);
         }
 
-        public async Task<List<CharacterVM>> GetUserCharacters(int userId) {
+        public async Task<List<CharacterVM>> GetUserCharacters(string userId) {
             await AddBearerToken();
             var userCharacters = await _client.UserCharactersAsync(userId);
             return _mapper.Map<List<CharacterVM>>(userCharacters);
         }
 
-        public async Task<List<CharacterVM>> GetUserCharactersFiltered(int userId) {
+        public async Task<List<CharacterVM>> GetUserCharactersFiltered(string userId) {
             await AddBearerToken();
             var userCharacters = await _client.FilterAsync(userId);
             return _mapper.Map<List<CharacterVM>>(userCharacters);

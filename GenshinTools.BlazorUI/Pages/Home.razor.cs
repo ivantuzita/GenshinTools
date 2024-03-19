@@ -13,25 +13,10 @@ public partial class Home
     public NavigationManager NavigationManager { get; set; }
     [Inject]
     public IAuthenticationService AuthenticationService { get; set; }
+    public string UserId { get; set; }
 
     protected async override Task OnInitializedAsync() {
         await ((ApiAuthenticationStateProvider)AuthenticationStateProvider)
             .GetAuthenticationStateAsync();
-    }
-
-    protected void GoToLogin() {
-        NavigationManager.NavigateTo("login/");
-    }
-    protected void GoToCharacters()
-    {
-        NavigationManager.NavigateTo("characters/");
-    }
-
-    protected void GoToRegister() {
-        NavigationManager.NavigateTo("register/");
-    }
-
-    protected async void Logout() {
-        await AuthenticationService.Logout();
     }
 }

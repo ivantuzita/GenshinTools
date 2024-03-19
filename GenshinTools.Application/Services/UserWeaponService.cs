@@ -10,26 +10,16 @@ public class UserWeaponService : IUserWeaponService {
 
     private readonly IUserWeaponRepository _repository;
     private readonly IGenericRepository<Weapon> _weaponRepo;
-    private readonly IGenericRepository<AuthRequest> _userRepo;
 
     public UserWeaponService(IUserWeaponRepository repository,
-        IGenericRepository<Weapon> weaponRepo,
-        IGenericRepository<AuthRequest> userRepo)
+        IGenericRepository<Weapon> weaponRepo)
     {
         _weaponRepo = weaponRepo;
-        _userRepo = userRepo;
         _repository = repository;
     }
 
-    public async Task AssociateWeaponToUser(int userId, int weaponId)
+    public async Task AssociateWeaponToUser(string userId, int weaponId)
     {
-        var userExists = _userRepo.GetByIdAsync(userId);
-
-        if (userExists == null)
-        {
-            throw new NotFoundException($"User with id {userId} has not been found.");
-        }
-
         var weaponExists = _weaponRepo.GetByIdAsync(weaponId);
 
         if (weaponExists == null)
@@ -46,15 +36,8 @@ public class UserWeaponService : IUserWeaponService {
         await _repository.AssociateWeaponToUser(userId, weaponId);
     }
 
-    public async Task DisassociateWeaponToUser(int userId, int weaponId)
+    public async Task DisassociateWeaponToUser(string userId, int weaponId)
     {
-        var userExists = _userRepo.GetByIdAsync(userId);
-
-        if (userExists == null)
-        {
-            throw new NotFoundException($"User with id {userId} has not been found.");
-        }
-
         var weaponExists = _weaponRepo.GetByIdAsync(weaponId);
 
         if (weaponExists == null)
@@ -72,27 +55,13 @@ public class UserWeaponService : IUserWeaponService {
         await _repository.DisassociateWeaponToUser(userId, weaponId);
     }
 
-    public async Task<List<Weapon>> GetUserWeapons(int userId)
+    public async Task<List<Weapon>> GetUserWeapons(string userId)
     {
-        var userExists = _userRepo.GetByIdAsync(userId);
-
-        if (userExists == null)
-        {
-            throw new NotFoundException($"User with id {userId} has not been found.");
-        }
-
         return await _repository.GetUserWeapons(userId);
     }
 
-    public async Task<List<Weapon>> GetUserWeaponsFiltered(int userId)
+    public async Task<List<Weapon>> GetUserWeaponsFiltered(string userId)
     {
-        var userExists = _userRepo.GetByIdAsync(userId);
-
-        if (userExists == null)
-        {
-            throw new NotFoundException($"User with id {userId} has not been found.");
-        }
-
         return await _repository.GetUserWeaponsFiltered(userId);
     }
 }

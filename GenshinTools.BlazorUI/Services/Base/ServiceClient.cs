@@ -88,75 +88,75 @@ namespace GenshinTools.BlazorUI.Services.Base
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task LinkAsync(int userId, int charId);
+        System.Threading.Tasks.Task LinkAsync(string userId, int charId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task LinkAsync(int userId, int charId, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task LinkAsync(string userId, int charId, System.Threading.CancellationToken cancellationToken);
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task UnlinkAsync(int userId, int charId);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task UnlinkAsync(int userId, int charId, System.Threading.CancellationToken cancellationToken);
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Character>> UserCharactersAsync(int userId);
+        System.Threading.Tasks.Task UnlinkAsync(string userId, int charId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Character>> UserCharactersAsync(int userId, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task UnlinkAsync(string userId, int charId, System.Threading.CancellationToken cancellationToken);
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Character>> FilterAsync(int userId);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Character>> FilterAsync(int userId, System.Threading.CancellationToken cancellationToken);
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task Link2Async(int userId, int weaponId);
+        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Character>> UserCharactersAsync(string userId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task Link2Async(int userId, int weaponId, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Character>> UserCharactersAsync(string userId, System.Threading.CancellationToken cancellationToken);
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task Unlink2Async(int userId, int weaponId);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task Unlink2Async(int userId, int weaponId, System.Threading.CancellationToken cancellationToken);
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Weapon>> UserWeaponsAsync(int userId);
+        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Character>> FilterAsync(string userId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Weapon>> UserWeaponsAsync(int userId, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Character>> FilterAsync(string userId, System.Threading.CancellationToken cancellationToken);
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Weapon>> Filter2Async(int userId);
+        System.Threading.Tasks.Task Link2Async(string userId, int weaponId);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Weapon>> Filter2Async(int userId, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task Link2Async(string userId, int weaponId, System.Threading.CancellationToken cancellationToken);
+
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task Unlink2Async(string userId, int weaponId);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task Unlink2Async(string userId, int weaponId, System.Threading.CancellationToken cancellationToken);
+
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Weapon>> UserWeaponsAsync(string userId);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Weapon>> UserWeaponsAsync(string userId, System.Threading.CancellationToken cancellationToken);
+
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Weapon>> Filter2Async(string userId);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Weapon>> Filter2Async(string userId, System.Threading.CancellationToken cancellationToken);
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -793,7 +793,7 @@ namespace GenshinTools.BlazorUI.Services.Base
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task LinkAsync(int userId, int charId)
+        public virtual System.Threading.Tasks.Task LinkAsync(string userId, int charId)
         {
             return LinkAsync(userId, charId, System.Threading.CancellationToken.None);
         }
@@ -801,7 +801,7 @@ namespace GenshinTools.BlazorUI.Services.Base
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task LinkAsync(int userId, int charId, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task LinkAsync(string userId, int charId, System.Threading.CancellationToken cancellationToken)
         {
             if (userId == null)
                 throw new System.ArgumentNullException("userId");
@@ -875,7 +875,7 @@ namespace GenshinTools.BlazorUI.Services.Base
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task UnlinkAsync(int userId, int charId)
+        public virtual System.Threading.Tasks.Task UnlinkAsync(string userId, int charId)
         {
             return UnlinkAsync(userId, charId, System.Threading.CancellationToken.None);
         }
@@ -883,7 +883,7 @@ namespace GenshinTools.BlazorUI.Services.Base
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task UnlinkAsync(int userId, int charId, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task UnlinkAsync(string userId, int charId, System.Threading.CancellationToken cancellationToken)
         {
             if (userId == null)
                 throw new System.ArgumentNullException("userId");
@@ -957,7 +957,7 @@ namespace GenshinTools.BlazorUI.Services.Base
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Character>> UserCharactersAsync(int userId)
+        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Character>> UserCharactersAsync(string userId)
         {
             return UserCharactersAsync(userId, System.Threading.CancellationToken.None);
         }
@@ -965,7 +965,7 @@ namespace GenshinTools.BlazorUI.Services.Base
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Character>> UserCharactersAsync(int userId, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Character>> UserCharactersAsync(string userId, System.Threading.CancellationToken cancellationToken)
         {
             if (userId == null)
                 throw new System.ArgumentNullException("userId");
@@ -1039,7 +1039,7 @@ namespace GenshinTools.BlazorUI.Services.Base
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Character>> FilterAsync(int userId)
+        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Character>> FilterAsync(string userId)
         {
             return FilterAsync(userId, System.Threading.CancellationToken.None);
         }
@@ -1047,7 +1047,7 @@ namespace GenshinTools.BlazorUI.Services.Base
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Character>> FilterAsync(int userId, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Character>> FilterAsync(string userId, System.Threading.CancellationToken cancellationToken)
         {
             if (userId == null)
                 throw new System.ArgumentNullException("userId");
@@ -1121,7 +1121,7 @@ namespace GenshinTools.BlazorUI.Services.Base
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task Link2Async(int userId, int weaponId)
+        public virtual System.Threading.Tasks.Task Link2Async(string userId, int weaponId)
         {
             return Link2Async(userId, weaponId, System.Threading.CancellationToken.None);
         }
@@ -1129,7 +1129,7 @@ namespace GenshinTools.BlazorUI.Services.Base
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task Link2Async(int userId, int weaponId, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task Link2Async(string userId, int weaponId, System.Threading.CancellationToken cancellationToken)
         {
             if (userId == null)
                 throw new System.ArgumentNullException("userId");
@@ -1203,7 +1203,7 @@ namespace GenshinTools.BlazorUI.Services.Base
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task Unlink2Async(int userId, int weaponId)
+        public virtual System.Threading.Tasks.Task Unlink2Async(string userId, int weaponId)
         {
             return Unlink2Async(userId, weaponId, System.Threading.CancellationToken.None);
         }
@@ -1211,7 +1211,7 @@ namespace GenshinTools.BlazorUI.Services.Base
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task Unlink2Async(int userId, int weaponId, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task Unlink2Async(string userId, int weaponId, System.Threading.CancellationToken cancellationToken)
         {
             if (userId == null)
                 throw new System.ArgumentNullException("userId");
@@ -1285,7 +1285,7 @@ namespace GenshinTools.BlazorUI.Services.Base
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Weapon>> UserWeaponsAsync(int userId)
+        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Weapon>> UserWeaponsAsync(string userId)
         {
             return UserWeaponsAsync(userId, System.Threading.CancellationToken.None);
         }
@@ -1293,7 +1293,7 @@ namespace GenshinTools.BlazorUI.Services.Base
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Weapon>> UserWeaponsAsync(int userId, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Weapon>> UserWeaponsAsync(string userId, System.Threading.CancellationToken cancellationToken)
         {
             if (userId == null)
                 throw new System.ArgumentNullException("userId");
@@ -1367,7 +1367,7 @@ namespace GenshinTools.BlazorUI.Services.Base
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Weapon>> Filter2Async(int userId)
+        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Weapon>> Filter2Async(string userId)
         {
             return Filter2Async(userId, System.Threading.CancellationToken.None);
         }
@@ -1375,7 +1375,7 @@ namespace GenshinTools.BlazorUI.Services.Base
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Weapon>> Filter2Async(int userId, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<Weapon>> Filter2Async(string userId, System.Threading.CancellationToken cancellationToken)
         {
             if (userId == null)
                 throw new System.ArgumentNullException("userId");

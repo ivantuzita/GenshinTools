@@ -5,7 +5,7 @@ namespace GenshinTools.Domain.Models;
 [Keyless]
 public class UserWeapon {
     [Required]
-    public int UserId { get; set; }
+    public string UserId { get; set; }
     [Required]
     public int WeaponId { get; set; }
 }

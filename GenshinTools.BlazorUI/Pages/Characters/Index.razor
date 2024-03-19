@@ -1,38 +1,37 @@
 ﻿@page "/characters/"
 @attribute [Authorize(Roles = "Administrator")]
 
-<h3>Characters</h3>
-
 @if (Characters == null)
 {
     <p>Loading Data...</p>
 }
 else
 {
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    Id
-                </th>
-                <th>
-                    Name
-                </th>
-                <th>
-                    WeekDays
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var character in Characters)
-            {
+    <div class="container mt-3">
+        <table class="table">
+            <thead>
                 <tr>
-                    <td>@character.Id </td>
-                    <td>@character.Name </td>
-                    <td>@character.WeekDays </td>
+                    <th scope="col">
+                        Id
+                    </th >
+                    <th scope="col">
+                        Name
+                    </th>
+                    <th scope ="col">
+                        WeekDays
+                    </th>
                 </tr>
-            }
-        </tbody>
-    </table>
-
+            </thead>
+            <tbody class="table-active">
+                @foreach (var character in Characters)
+                {
+                    <tr scope="row">
+                        <td>@character.Id </td>
+                        <td>@character.Name </td>
+                        <td>@character.WeekDays </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 }

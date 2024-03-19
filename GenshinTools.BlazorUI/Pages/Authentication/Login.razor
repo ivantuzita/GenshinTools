@@ -1,7 +1,5 @@
 ﻿@page "/login"
 
-<h3>Login</h3>
-
 @if (!string.IsNullOrEmpty(Message))
 {
     <div>
@@ -9,26 +7,25 @@
     </div>
 }
 
-<div>
-    <div>
-        <EditForm Model="@Model" OnValidSubmit="HandleLogin">
-            <DataAnnotationsValidator/>
-            <ValidationSummary />
-
-            <div>
-                <label>Username</label>
-                <InputText id="username" class="form-label mt-4" @bind-Value=@Model.Username></InputText>
-                <ValidationMessage For="@(() => Model.Username)"/>
-            </div>
-            <div>
-                <label>Password</label>
-                <InputText type="password" id="password" class="form-label mt-4" @bind-Value=@Model.Password></InputText>
-                <ValidationMessage For="@(() => Model.Password)" />
-            </div>
-            <div>
-                <input type="submit" value="login"/>
-            </div>
-        </EditForm>
-    </div>
+<div class="container mt-2" style="max-width: 450px;">
+    <EditForm Model="@Model" class="card col-xs-1 text-center text-white bg-dark" OnValidSubmit="HandleLogin">
+        <DataAnnotationsValidator/>
+        <div class="card-header">Login</div>
+        <div class="m-3">
+            <label for="username" class="form-label">Username: </label>
+            <InputText id="username" class="form-control" aria-label="Username" @bind-Value=@Model.Username></InputText>
+            <ValidationMessage For="@(() => Model.Username)"/>
+        </div>
+        <div class="m-3">
+            <label for="password" class="form-label">Password: </label>
+            <InputText type="password" class="form-control" id="password" @bind-Value=@Model.Password></InputText>
+            <ValidationMessage For="@(() => Model.Password)" />
+        </div>
+        <div class="m-3">
+            <input type="submit" class="btn-light" value="Login" />
+        </div>
+    </EditForm>
 </div>
+
+
 

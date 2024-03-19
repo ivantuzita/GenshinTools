@@ -3,9 +3,9 @@
 namespace GenshinTools.Domain.Interfaces;
 
 public interface IUserWeaponRepository {
-    Task AssociateWeaponToUser(int userId, int weaponId);
-    Task DisassociateWeaponToUser(int userId, int weaponId);
-    Task<List<Weapon>> GetUserWeapons(int userId);
-    Task<List<Weapon>> GetUserWeaponsFiltered(int userId);
-    Task<bool> AlreadyAssociated(int userId, int weaponId);
+    Task AssociateWeaponToUser(string userId, int weaponId);
+    Task DisassociateWeaponToUser(string userId, int weaponId);
+    Task<List<Weapon>> GetUserWeapons(string userId);
+    Task<List<Weapon>> GetUserWeaponsFiltered(string userId);
+    Task<bool> AlreadyAssociated(string userId, int weaponId);
 }
