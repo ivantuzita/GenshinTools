@@ -1,16 +1,24 @@
-﻿<div class="card mt-3 mb-3 text-white bg-secondary text-center">
+﻿<div class="card mt-3 mb-3 text-center">
     <h3 class="card-header">@Name</h3>
     <div class="card-body">
-        <h6 class="card-subtitle text-white">maybe this is where i should put stars or something</h6>
+        <h6 class="card-subtitle text-white">@Stars</h6>
     </div>
     <div class="text-center">
-        <span style="height: 257px; width: 260px; border: solid 1px; border-radius: 50%; display: inline-block; background-color: white">
-            <img width="256px" height="256px" style="border-radius: 50%;" src="@PictureURL" />
+        <span style="height: 189px; width: 185px; border: solid 2px; border-radius: 50%; display: inline-block; background-color: floralwhite">
+            <img width="185" height="185" style="border-radius: 50%;" src="@PictureURL" />
         </span>
     </div>
-    <div class="card-body">
-        <p class="card-text">Maybe a brief bio of the character or other important info</p>
-    </div>
+    <ul class="list-group list-group-flush mt-2">
+        <li class="list-group-item">
+            <span style="height: 50px; width: 50px; border: solid 2px; border-radius: 50%; display: inline-block; background-color: floralwhite">
+                <img src="@MaterialURL" width="50px" height="50px" style="border-radius: 50%;" />
+            </span>
+            <strong>@Material</strong>
+            </li>
+        <li class="list-group-item">
+            <a href="@LocationURL" target="_blank">Map Location of domain that has @Material</a>
+        </li>
+    </ul>
     <div class="card-body">
         <input type="submit" class="btn btn-success btn-lg" value="Done" />
         <input type="submit" class="btn btn-danger btn-lg" value="Cancel" />

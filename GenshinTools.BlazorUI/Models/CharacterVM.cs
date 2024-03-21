@@ -12,5 +12,5 @@ public class CharacterVM {
     public string TalentMaterial { get; set; }
     public string TalentMaterialPictureURL { get; set; }
     //separated by semicolon
-    public string HowToObtainMaterial { get; set; }
+    public string DomainLocationURL { get; set; }
 }

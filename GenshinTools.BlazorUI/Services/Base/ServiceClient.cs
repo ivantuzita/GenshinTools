@@ -1486,8 +1486,8 @@ namespace GenshinTools.BlazorUI.Services.Base
         [Newtonsoft.Json.JsonProperty("talentMaterialPictureURL", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string TalentMaterialPictureURL { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("howToObtainMaterial", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string HowToObtainMaterial { get; set; }
+        [Newtonsoft.Json.JsonProperty("domainLocationURL", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string DomainLocationURL { get; set; }
 
     }
 
@@ -1539,8 +1539,8 @@ namespace GenshinTools.BlazorUI.Services.Base
         [Newtonsoft.Json.JsonProperty("talentMaterialPictureURL", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string TalentMaterialPictureURL { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("howToObtainMaterial", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string HowToObtainMaterial { get; set; }
+        [Newtonsoft.Json.JsonProperty("domainLocationURL", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string DomainLocationURL { get; set; }
 
     }
 

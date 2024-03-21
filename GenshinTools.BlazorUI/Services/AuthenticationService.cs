@@ -5,7 +5,6 @@ using GenshinTools.BlazorUI.Services.Base;
 using Microsoft.AspNetCore.Components.Authorization;
 
 namespace GenshinTools.BlazorUI.Services;
-
 public class AuthenticationService : BaseHttpService, IAuthenticationService
 {
     private readonly AuthenticationStateProvider _authStateProvider;

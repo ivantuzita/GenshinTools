@@ -22,7 +22,7 @@ namespace GenshinTools.BlazorUI.Pages.Characters
         {
             var userId = await ((ApiAuthenticationStateProvider)AuthenticationStateProvider)
             .GetId();
-            Characters = await UserCharacterService.GetUserCharacters(userId);
+            Characters = await UserCharacterService.GetUserCharactersFiltered(userId);
         }
     }
 
