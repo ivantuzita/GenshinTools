@@ -12,8 +12,7 @@ public class UserCharacterService : IUserCharacterService {
     private readonly IGenericRepository<Character> _charRepo;
 
     public UserCharacterService(IUserCharacterRepository repository,
-        IGenericRepository<Character> charRepo,
-        IGenericRepository<AuthRequest> userRepo)
+        IGenericRepository<Character> charRepo)
     {
         _repository = repository;
         _charRepo = charRepo;

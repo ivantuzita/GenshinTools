@@ -10,7 +10,6 @@ public class GenshinDatabaseContext : DbContext {
     }
 
     public DbSet<Character> Characters { get; set; }
-    public DbSet<AuthRequest> Users { get; set; }
     public DbSet<Weapon> Weapons { get; set; }
     public DbSet<UserCharacter> UserCharacters { get; set; }
     public DbSet<UserWeapon> UserWeapons { get; set; }

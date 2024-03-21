@@ -25,7 +25,7 @@ namespace GenshinTools.BlazorUI.Services {
 
         public async Task<List<CharacterVM>> GetUserCharacters(string userId) {
             await AddBearerToken();
-            var userCharacters = await _client.UserCharactersAsync(userId);
+            var userCharacters = await _client.CAsync(userId);
             return _mapper.Map<List<CharacterVM>>(userCharacters);
         }
 

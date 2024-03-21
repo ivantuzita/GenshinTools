@@ -25,7 +25,7 @@ namespace GenshinTools.BlazorUI.Services {
 
         public async Task<List<WeaponVM>> GetUserWeapons(string userId) {
             await AddBearerToken();
-            var userWeapons = await _client.UserWeaponsAsync(userId);
+            var userWeapons = await _client.WAsync(userId);
             return _mapper.Map<List<WeaponVM>>(userWeapons);
         }
 

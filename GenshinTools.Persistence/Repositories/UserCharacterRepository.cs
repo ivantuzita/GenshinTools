@@ -64,6 +64,7 @@ public class UserCharacterRepository : IUserCharacterRepository
 
     private int dayOfWeek()
     {
+        // 1: monday, 2: tuesday, 3: wednesday, so on and so forth
         return ((int)DateTime.Now.DayOfWeek + 6) % 7;
     }
 

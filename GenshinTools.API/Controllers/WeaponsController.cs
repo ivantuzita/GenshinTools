@@ -1,5 +1,4 @@
-﻿using GenshinTools.Application.DTOs;
-using GenshinTools.Application.Services.Interfaces;
+﻿using GenshinTools.Application.Services.Interfaces;
 using GenshinTools.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -30,26 +29,5 @@ public class WeaponsController : ControllerBase {
     public async Task<ActionResult<Weapon>> GetByIdAsync(int id) {
         var result = await _weaponService.GetByIdAsync(id);
         return Ok(result);
-    }
-
-    // POST api/<WeaponsController>
-    [HttpPost]
-    public async Task<ActionResult> CreateAsync([FromBody] WeaponDTO weaponDTO) {
-        await _weaponService.CreateAsync(weaponDTO);
-        return Ok();
-    }
-
-    // PUT api/<UsersController>/5
-    [HttpPut("{id}")]
-    public async Task<ActionResult> UpdateAsync([FromBody] WeaponDTO weaponDTO) {
-        await _weaponService.UpdateAsync(weaponDTO);
-        return Ok();
-    }
-
-    // DELETE api/<UsersController>/5
-    [HttpDelete("{id}")]
-    public async Task<ActionResult> DeleteAsync([FromRoute] int id) {
-        await _weaponService.DeleteByIdAsync(id);
-        return Ok();
     }
 }

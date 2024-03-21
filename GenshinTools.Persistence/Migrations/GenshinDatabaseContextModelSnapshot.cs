@@ -29,11 +29,26 @@ namespace GenshinTools.Persistence.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("HowToObtainMaterial")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("PictureURL")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("Quality")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TalentMaterial")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("TalentMaterialPictureURL")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -44,19 +59,6 @@ namespace GenshinTools.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Characters");
-                });
-
-            modelBuilder.Entity("GenshinTools.Domain.Models.Identity.AuthRequest", b =>
-                {
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Username")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("GenshinTools.Domain.Models.UserCharacter", b =>
@@ -91,11 +93,26 @@ namespace GenshinTools.Persistence.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("HowToObtainMaterial")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("PictureURL")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("Quality")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TalentMaterial")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("TalentMaterialPictureURL")
                         .IsRequired()
                         .HasColumnType("longtext");
 
