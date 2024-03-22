@@ -1,0 +1,37 @@
+﻿@page "/characters/list"
+
+<div class="container mt-3">
+    <h3>List of characters</h3>
+</div>
+
+@if (UserCharacters == null)
+{
+    <p>Loading Data...</p>
+}
+else
+{
+    <div class="container mt-3">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        Name
+                    </th>
+                    <th scope="col">
+                        Image
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="table-active">
+                @foreach (var usercharacters in UserCharacters)
+                {
+                    <tr scope="row">
+                        <td>@usercharacters.Name </td>
+                        <td><img src="@usercharacters.PictureURL" /></td>
+                        <td>@usercharacters.WeekDays </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}

@@ -10,10 +10,7 @@ public partial class Home
 {
     [Inject]
     private AuthenticationStateProvider AuthenticationStateProvider { get; set; }
-    [Inject]
-    public IUserCharacterService UserCharacterService { get; set; }
 
-    public List<CharacterVM> Characters { get; private set; }
     IDictionary<int, string> WeekDays = new Dictionary<int, string>()
     {
         {0, "Monday"},
@@ -34,8 +31,5 @@ public partial class Home
     protected async override Task OnInitializedAsync() {
         await ((ApiAuthenticationStateProvider)AuthenticationStateProvider)
             .GetAuthenticationStateAsync();
-        var userId = await ((ApiAuthenticationStateProvider)AuthenticationStateProvider)
-            .GetId();
-        Characters = await UserCharacterService.GetUserCharactersFiltered(userId);
     }
 }

@@ -1,32 +1,31 @@
-﻿@page "/characters"
+﻿@page "/weapons"
 @using GenshinTools.BlazorUI.Pages.Components;
 @using GenshinTools.BlazorUI.Shared;
 
 <PageTitle>Characters</PageTitle>
 
 <div class="container mt-4">
-    <h3>Today is <strong>@getWeekDay()</strong>! These are your characters that need their talents upgraded:</h3>
+    <h3>Today is <strong>@getWeekDay()</strong>! These are your weapons that need upgrading:</h3>
 </div>
 
 <AuthorizeView>
     <Authorized>
         <div class="container">
-            @if (Characters == null)
+            @if (Weapons == null)
             {
                 <p>Loading Data...</p>
             }
             else
             {
                 <div class="row">
-
                 </div>
                 <div class="row">
-                    @foreach (var character in Characters)
+                    @foreach (var weapon in Weapons)
                     {
                         <div class="col" style="min-width: 25%; max-width: 25%">
-                            <CharCard Name="@character.Name" PictureURL="@character.PictureURL"
-                                        Material="@character.TalentMaterial" MaterialURL="@character.TalentMaterialPictureURL"
-                                        LocationURL="@character.DomainLocationURL" Quality="@character.Quality" />
+                            <CharCard Name="@weapon.Name" PictureURL="@weapon.PictureURL"
+                                        Material="@weapon.TalentMaterial" MaterialURL="@weapon.TalentMaterialPictureURL"
+                                        LocationURL="@weapon.DomainLocationURL" Quality="@weapon.Quality" />
                         </div>
                     }
                 </div>

@@ -4,16 +4,16 @@ using GenshinTools.BlazorUI.Providers;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
 
-namespace GenshinTools.BlazorUI.Pages.Characters
+namespace GenshinTools.BlazorUI.Pages.Weapons
 {
     public partial class Index
     {
         [Inject]
         private AuthenticationStateProvider AuthenticationStateProvider { get; set; }
         [Inject]
-        public IUserCharacterService UserCharacterService { get; set; }
+        public IUserWeaponService UserWeaponService { get; set; }
 
-        public List<CharacterVM> Characters { get; private set; }
+        public List<WeaponVM> Weapons { get; private set; }
         IDictionary<int, string> WeekDays = new Dictionary<int, string>()
     {
         {0, "Monday"},
@@ -38,8 +38,7 @@ namespace GenshinTools.BlazorUI.Pages.Characters
                 .GetAuthenticationStateAsync();
             var userId = await ((ApiAuthenticationStateProvider)AuthenticationStateProvider)
                 .GetId();
-            Characters = await UserCharacterService.GetUserCharactersFiltered(userId);
+            Weapons = await UserWeaponService.GetUserWeapons(userId);
         }
     }
-
 }
