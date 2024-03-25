@@ -9,18 +9,42 @@ public class UserCharacterService : BaseHttpService, IUserCharacterService {
 
     private readonly IMapper _mapper;
 
-    public UserCharacterService(IClient client, IMapper mapper, ILocalStorageService _localStorage) : base(client, _localStorage) {
+    public UserCharacterService(IClient client,
+        IMapper mapper,
+        ILocalStorageService _localStorage) : base(client, _localStorage) {
         _mapper = mapper;
     }
 
-    public async Task AssociateCharacterToUser(string userId, int charId) {
-        await AddBearerToken();
-        await _client.LinkAsync(userId, charId);
+    public async Task<Response<Guid>> AssociateCharacterToUser(string userId, int charId) {
+        try
+        {
+            await AddBearerToken();
+            await _client.LinkAsync(userId, charId);
+            return new Response<Guid>()
+            {
+                Success = true,
+            };
+        }
+        catch (ApiException ex)
+        {
+            return ConvertApiExceptions<Guid>(ex);
+        }
     }
 
-    public async Task DisassociateCharacterToUser(string userId, int charId) {
-        await AddBearerToken();
-        await _client.UnlinkAsync(userId, charId);
+    public async Task<Response<Guid>> DisassociateCharacterToUser(string userId, int charId) {
+        try
+        {
+            await AddBearerToken();
+            await _client.UnlinkAsync(userId, charId);
+            return new Response<Guid>()
+            {
+                Success = true,
+            };
+        }
+        catch (ApiException ex)
+        {
+            return ConvertApiExceptions<Guid>(ex);
+        }
     }
 
     public async Task<List<CharacterVM>> GetUserCharacters(string userId) {

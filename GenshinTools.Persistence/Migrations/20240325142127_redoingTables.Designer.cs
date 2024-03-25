@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GenshinTools.Persistence.Migrations
 {
     [DbContext(typeof(GenshinDatabaseContext))]
-    [Migration("20240321134138_fixingMinorProblemWithTables")]
-    partial class fixingMinorProblemWithTables
+    [Migration("20240325142127_redoingTables")]
+    partial class redoingTables
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,7 +32,7 @@ namespace GenshinTools.Persistence.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("HowToObtainMaterial")
+                    b.Property<string>("DomainLocationURL")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -66,6 +66,12 @@ namespace GenshinTools.Persistence.Migrations
 
             modelBuilder.Entity("GenshinTools.Domain.Models.UserCharacter", b =>
                 {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
                     b.Property<int>("CharacterId")
                         .HasColumnType("int");
 
@@ -73,17 +79,27 @@ namespace GenshinTools.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.HasKey("Id");
+
                     b.ToTable("UserCharacters");
                 });
 
             modelBuilder.Entity("GenshinTools.Domain.Models.UserWeapon", b =>
                 {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
                     b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<int>("WeaponId")
                         .HasColumnType("int");
+
+                    b.HasKey("Id");
 
                     b.ToTable("UserWeapons");
                 });
@@ -96,7 +112,7 @@ namespace GenshinTools.Persistence.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("HowToObtainMaterial")
+                    b.Property<string>("DomainLocationURL")
                         .IsRequired()
                         .HasColumnType("longtext");
 

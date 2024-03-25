@@ -1,9 +1,7 @@
-﻿using AutoMapper;
-using GenshinTools.Application.Exceptions;
+﻿using GenshinTools.Application.Exceptions;
 using GenshinTools.Application.Services.Interfaces;
 using GenshinTools.Domain.Interfaces;
 using GenshinTools.Domain.Models;
-using GenshinTools.Domain.Models.Identity;
 
 namespace GenshinTools.Application.Services;
 public class UserWeaponService : IUserWeaponService {

@@ -49,7 +49,6 @@ public class UserCharacterRepository : IUserCharacterRepository
 
         // not sure if this is correct or the most efficient way to do this.
         var chars = await _context.Characters.Where(x => userChars.Contains(x.Id)).ToListAsync();
-
         return chars;
     }
 
@@ -58,11 +57,11 @@ public class UserCharacterRepository : IUserCharacterRepository
         var chars = await GetUserCharacters(userId);
         // not sure if this is correct or the most efficient way to do this.
         var filter = chars.Where(y => y.WeekDays.Split(',').Select(x => int.Parse(x))
-        .Contains(dayOfWeek())).ToList();
+        .Contains(DayOfWeek())).ToList();
         return filter;
     }
 
-    private int dayOfWeek()
+    private int DayOfWeek()
     {
         // 1: monday, 2: tuesday, 3: wednesday, so on and so forth
         return ((int)DateTime.Now.DayOfWeek + 6) % 7;

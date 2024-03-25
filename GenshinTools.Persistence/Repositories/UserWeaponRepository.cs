@@ -8,7 +8,7 @@ namespace GenshinTools.Persistence.Repositories;
 
 public class UserWeaponRepository : IUserWeaponRepository
 {
-    private readonly GenshinDatabaseContext _context;
+    protected readonly GenshinDatabaseContext _context;
 
     public UserWeaponRepository(GenshinDatabaseContext context)
     {
@@ -22,7 +22,7 @@ public class UserWeaponRepository : IUserWeaponRepository
 
     public async Task AssociateWeaponToUser(string userId, int weaponId)
     {
-        var userWeapon = new { userId, weaponId };
+        var userWeapon = new UserWeapon { UserId = userId, WeaponId = weaponId };
         await _context.AddAsync(userWeapon);
         await _context.SaveChangesAsync();
     }
@@ -49,7 +49,6 @@ public class UserWeaponRepository : IUserWeaponRepository
 
         // not sure if this is correct or the most efficient way to do this.
         var weapons = await _context.Weapons.Where(x => userWeapons.Contains(x.Id)).ToListAsync();
-
         return weapons;
     }
 

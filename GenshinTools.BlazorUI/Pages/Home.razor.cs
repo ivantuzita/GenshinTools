@@ -1,5 +1,3 @@
-using GenshinTools.BlazorUI.Interfaces;
-using GenshinTools.BlazorUI.Models;
 using GenshinTools.BlazorUI.Providers;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
@@ -10,6 +8,7 @@ public partial class Home
 {
     [Inject]
     private AuthenticationStateProvider AuthenticationStateProvider { get; set; }
+    public string userId { get; set; }
 
     IDictionary<int, string> WeekDays = new Dictionary<int, string>()
     {

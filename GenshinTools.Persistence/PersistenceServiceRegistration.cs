@@ -9,9 +9,9 @@ namespace GenshinTools.Persistence;
 public static class PersistenceServiceRegistration {
     public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration configuration) {
         services.AddDbContext<GenshinDatabaseContext>(options => {
-            options.UseMySql(configuration.GetConnectionString("GenshinConnectionString"), ServerVersion.AutoDetect(
-                configuration.GetConnectionString("GenshinConnectionString")));
-        });
+            options.UseMySql(configuration.GetConnectionString("GenshinConnectionString"),
+                ServerVersion.AutoDetect(configuration.GetConnectionString("GenshinConnectionString")));
+    }, ServiceLifetime.Transient);
 
         services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
         services.AddScoped<IUserCharacterRepository, UserCharacterRepository>();

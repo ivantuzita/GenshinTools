@@ -7,7 +7,6 @@ namespace GenshinTools.API.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-[Authorize]
 public class CharactersController : ControllerBase {
 
     private readonly ICharacterService _characterService;
