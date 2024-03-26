@@ -17,19 +17,37 @@
             }
             else
             {
-                <div class="row">
-
-                </div>
-                <div class="row">
-                    @foreach (var character in Characters)
-                    {
-                        <div class="col" style="min-width: 25%; max-width: 25%">
-                            <CharCard Name="@character.Name" PictureURL="@character.PictureURL"
-                                        Material="@character.TalentMaterial" MaterialURL="@character.TalentMaterialPictureURL"
-                                        LocationURL="@character.DomainLocationURL" Quality="@character.Quality" />
-                        </div>
-                    }
-                </div>
+                if (Characters.Any())
+                {
+                    <div class="row">
+                        @foreach (var character in Characters)
+                        {
+                            <div class="col" style="min-width: 25%; max-width: 25%">
+                                <CharCard Id="@character.Id" Name="@character.Name" PictureURL="@character.PictureURL"
+                                Material="@character.TalentMaterial" MaterialURL="@character.TalentMaterialPictureURL"
+                                LocationURL="@character.DomainLocationURL" Quality="@character.Quality" ButtonClass="btn btn-success btn-lg"
+                                OnDone="DoneCharacter" />
+                            </div>
+                        }
+                    </div>
+                }
+                if (DoneCharacters.Any())
+                {
+                    <div class="container mt-3">
+                        <h3><strong>Great job!</strong> These are the characters that you already did:</h3>
+                    </div>
+                    <div class="row">
+                        @foreach (var character in DoneCharacters)
+                        {
+                            <div class="col" style="min-width: 25%; max-width: 25%">
+                                <CharCard Id="@character.Id" Name="@character.Name" PictureURL="@character.PictureURL"
+                                          Material="@character.TalentMaterial" MaterialURL="@character.TalentMaterialPictureURL"
+                                          LocationURL="@character.DomainLocationURL" Quality="@character.Quality" ButtonClass="btn btn-danger btn-lg"
+                                          OnDone="CancelCharacter" />
+                            </div>
+                        }
+                    </div>
+                }
             }
         </div>
     </Authorized>

@@ -3,7 +3,6 @@ using Blazored.LocalStorage;
 using GenshinTools.BlazorUI.Interfaces;
 using GenshinTools.BlazorUI.Models;
 using GenshinTools.BlazorUI.Services.Base;
-using System;
 
 namespace GenshinTools.BlazorUI.Services; 
 public class UserWeaponService : BaseHttpService, IUserWeaponService {

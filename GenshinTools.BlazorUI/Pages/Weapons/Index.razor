@@ -4,10 +4,6 @@
 
 <PageTitle>Characters</PageTitle>
 
-<div class="container mt-4">
-    <h3>Today is <strong>@getWeekDay()</strong>! These are your weapons that need upgrading:</h3>
-</div>
-
 <AuthorizeView>
     <Authorized>
         <div class="container">
@@ -17,18 +13,39 @@
             }
             else
             {
-                <div class="row">
-                </div>
-                <div class="row">
-                    @foreach (var weapon in Weapons)
-                    {
-                        <div class="col" style="min-width: 25%; max-width: 25%">
-                            <CharCard Name="@weapon.Name" PictureURL="@weapon.PictureURL"
-                                        Material="@weapon.TalentMaterial" MaterialURL="@weapon.TalentMaterialPictureURL"
-                                        LocationURL="@weapon.DomainLocationURL" Quality="@weapon.Quality" />
-                        </div>
-                    }
-                </div>
+                if (Weapons.Any()) {
+                    <div class="container mt-4">
+                        <h3>Today is <strong>@getWeekDay()</strong>! These are your weapons that need upgrading:</h3>
+                    </div>
+                    <div class="row">
+                        @foreach (var weapon in Weapons)
+                        {
+                            <div class="col" style="min-width: 25%; max-width: 25%">
+                                <CharCard Id="@weapon.Id" Name="@weapon.Name" PictureURL="@weapon.PictureURL"
+                                          Material="@weapon.TalentMaterial" MaterialURL="@weapon.TalentMaterialPictureURL"
+                                          LocationURL="@weapon.DomainLocationURL" Quality="@weapon.Quality" ButtonClass="btn btn-success btn-lg"
+                                          OnDone="DoneWeapon" />
+                            </div>
+                        }
+                    </div>
+                }
+                if (DoneWeapons.Any())
+                {
+                    <div class="container mt-3">
+                        <h3><strong>Great job!</strong> These are the characters that you already did:</h3>
+                    </div>
+                    <div class="row">
+                        @foreach (var weapon in DoneWeapons)
+                        {
+                            <div class="col" style="min-width: 25%; max-width: 25%">
+                                <CharCard Id="@weapon.Id" Name="@weapon.Name" PictureURL="@weapon.PictureURL"
+                                          Material="@weapon.TalentMaterial" MaterialURL="@weapon.TalentMaterialPictureURL"
+                                          LocationURL="@weapon.DomainLocationURL" Quality="@weapon.Quality" ButtonClass="btn btn-danger btn-lg"
+                                          OnDone="CancelWeapon" />
+                            </div>
+                        }
+                    </div>
+                }
             }
         </div>
     </Authorized>
