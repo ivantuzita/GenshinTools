@@ -12,34 +12,16 @@ public class MockUserCharacterRepository
     {
         var userChars = new List<UserCharacter> {
             new UserCharacter {
-                UserId = 1,
+                UserId = "lorem_ipsum",
                 CharacterId = 1
             },
             new UserCharacter {
-                UserId = 1,
+                UserId = "lorem_ipsum",
                 CharacterId = 2
             },
             new UserCharacter {
-                UserId = 2,
+                UserId = "amet_consectur",
                 CharacterId = 1
-            }
-        };
-
-        var users = new List<AuthRequest> {
-            new AuthRequest {
-                Id = 1,
-                Username = "Test_User_1",
-                Password = "Valid.Password1!"
-            },
-            new AuthRequest {
-                Id = 2,
-                Username = "test_User_2",
-                Password = "Valid.Password1!"
-            },
-            new AuthRequest {
-                Id = 3,
-                Username = "test_User_3",
-                Password = "Valid.Password1!"
             }
         };
 
@@ -47,45 +29,48 @@ public class MockUserCharacterRepository
             new Character {
                 Id = 1,
                 Name = "Test_character_1",
-                WeekDays = "2,5"
+                WeekDays = "2,5",
+                Quality = 4
             },
             new Character {
                 Id = 2,
                 Name = "test_character_2",
-                WeekDays = "1,3"
+                WeekDays = "1,3",
+                Quality = 4
             },
             new Character {
                 Id = 3,
                 Name = "test_character_3",
-                WeekDays = "1,3"
+                WeekDays = "1,3",
+                Quality = 4
             }
         };
 
         var mockRepo = new Mock<IUserCharacterRepository>();
 
-        mockRepo.Setup(r => r.AlreadyAssociated(It.IsAny<int>(), It.IsAny<int>()))
-            .Returns((int userid, int charid) => {
+        mockRepo.Setup(r => r.AlreadyAssociated(It.IsAny<string>(), It.IsAny<int>()))
+            .Returns((string userid, int charid) => {
                 var result = userChars.Any(x => x.UserId == userid && x.CharacterId == charid);
                 return Task.FromResult(result);
             });
 
-        mockRepo.Setup(r => r.AssociateCharacterToUser(It.IsAny<int>(), It.IsAny<int>()))
-            .Returns((int userid, int characterid) => {
+        mockRepo.Setup(r => r.AssociateCharacterToUser(It.IsAny<string>(), It.IsAny<int>()))
+            .Returns((string userid, int characterid) => {
                 var userChar = new UserCharacter {UserId = userid, CharacterId = characterid};
                 userChars.Add(userChar);
                 return Task.CompletedTask;
             });
 
-        mockRepo.Setup(r => r.DisassociateCharacterToUser(It.IsAny<int>(), It.IsAny<int>()))
-        .Returns((int userid, int characterid) => {
+        mockRepo.Setup(r => r.DisassociateCharacterToUser(It.IsAny<string>(), It.IsAny<int>()))
+        .Returns((string userid, int characterid) => {
                 var obj = userChars.Where(q => q.UserId == userid
                     && q.CharacterId == characterid).FirstOrDefault();
                 userChars.Remove(obj);
                 return Task.CompletedTask;
         });
 
-        mockRepo.Setup(r => r.GetUserCharacters(It.IsAny<int>()))
-            .Returns((int id) => {
+        mockRepo.Setup(r => r.GetUserCharacters(It.IsAny<string>()))
+            .Returns((string id) => {
                 var userCharsList = userChars.Where(q => q.UserId == id)
                     .Select(x => x.CharacterId)
                     .ToList();
@@ -95,8 +80,8 @@ public class MockUserCharacterRepository
                 return Task.FromResult(result);
         });
 
-        mockRepo.Setup(r => r.GetUserCharactersFiltered(It.IsAny<int>()))
-            .Returns((int id) => {
+        mockRepo.Setup(r => r.GetUserCharactersFiltered(It.IsAny<string>()))
+            .Returns((string id) => {
                 var userCharsList = userChars.Where(q => q.UserId == id)
                 .Select(x => x.CharacterId)
                 .ToList();

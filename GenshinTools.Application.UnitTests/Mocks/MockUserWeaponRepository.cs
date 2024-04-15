@@ -11,34 +11,16 @@ public class MockUserWeaponRepository
     {
         var userWeapons = new List<UserWeapon> {
             new UserWeapon {
-                UserId = 1,
+                UserId = "lorem_ipsum",
                 WeaponId = 1
             },
             new UserWeapon {
-                UserId = 1,
+                UserId = "lorem_ipsum",
                 WeaponId = 2
             },
             new UserWeapon {
-                UserId = 2,
+                UserId = "amet_consectur",
                 WeaponId = 1
-            }
-        };
-
-        var users = new List<AuthRequest> {
-            new AuthRequest {
-                Id = 1,
-                Username = "Test_User_1",
-                Password = "Valid.Password1!"
-            },
-            new AuthRequest {
-                Id = 2,
-                Username = "test_User_2",
-                Password = "Valid.Password1!"
-            },
-            new AuthRequest {
-                Id = 3,
-                Username = "test_User_3",
-                Password = "Valid.Password1!"
             }
         };
 
@@ -62,29 +44,29 @@ public class MockUserWeaponRepository
 
         var mockRepo = new Mock<IUserWeaponRepository>();
 
-        mockRepo.Setup(r => r.AlreadyAssociated(It.IsAny<int>(), It.IsAny<int>()))
-            .Returns((int userId, int weaponId) => {
+        mockRepo.Setup(r => r.AlreadyAssociated(It.IsAny<string>(), It.IsAny<int>()))
+            .Returns((string userId, int weaponId) => {
                 var result = userWeapons.Any(x => x.UserId == userId && x.WeaponId == weaponId);
                 return Task.FromResult(result);
             });
 
-        mockRepo.Setup(r => r.AssociateWeaponToUser(It.IsAny<int>(), It.IsAny<int>()))
-            .Returns((int userId, int weaponId) => {
+        mockRepo.Setup(r => r.AssociateWeaponToUser(It.IsAny<string>(), It.IsAny<int>()))
+            .Returns((string userId, int weaponId) => {
                 var userWeapon = new UserWeapon { UserId = userId, WeaponId = weaponId };
                 userWeapons.Add(userWeapon);
                 return Task.CompletedTask;
             });
 
-        mockRepo.Setup(r => r.DisassociateWeaponToUser(It.IsAny<int>(), It.IsAny<int>()))
-            .Returns((int userId, int weaponId) => {
+        mockRepo.Setup(r => r.DisassociateWeaponToUser(It.IsAny<string>(), It.IsAny<int>()))
+            .Returns((string userId, int weaponId) => {
                 var obj = userWeapons.Where(q => q.UserId == userId
                     && q.WeaponId == weaponId).FirstOrDefault();
                 userWeapons.Remove(obj);
                 return Task.CompletedTask;
         });
 
-        mockRepo.Setup(r => r.GetUserWeapons(It.IsAny<int>()))
-            .Returns((int id) => {
+        mockRepo.Setup(r => r.GetUserWeapons(It.IsAny<string>()))
+            .Returns((string id) => {
                 var userWeaponsList = userWeapons.Where(q => q.UserId == id)
                     .Select(x => x.WeaponId)
                     .ToList();
@@ -94,8 +76,8 @@ public class MockUserWeaponRepository
                 return Task.FromResult(result);
             });
 
-        mockRepo.Setup(r => r.GetUserWeaponsFiltered(It.IsAny<int>()))
-            .Returns((int id) => {
+        mockRepo.Setup(r => r.GetUserWeaponsFiltered(It.IsAny<string>()))
+            .Returns((string id) => {
                 var userWeaponsList = userWeapons.Where(q => q.UserId == id)
                 .Select(x => x.WeaponId)
                 .ToList();
