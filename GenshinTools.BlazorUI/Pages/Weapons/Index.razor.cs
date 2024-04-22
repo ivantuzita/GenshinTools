@@ -50,7 +50,7 @@ public partial class Index
     {
         await ((ApiAuthenticationStateProvider)AuthenticationStateProvider).GetAuthenticationStateAsync();
         var userId = await ((ApiAuthenticationStateProvider)AuthenticationStateProvider).GetId();
-        Weapons = await UserWeaponService.GetUserWeapons(userId);
+        Weapons = await UserWeaponService.GetUserWeaponsFiltered(userId);
         if (!Weapons.Any())
         {
             Weapons = await UserWeaponService.GetUserWeaponsFiltered(userId);
