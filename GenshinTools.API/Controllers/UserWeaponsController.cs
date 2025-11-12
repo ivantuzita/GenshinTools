@@ -1,4 +1,5 @@
-﻿using GenshinTools.Application.Services.Interfaces;
+﻿using GenshinTools.Application.DTOs;
+using GenshinTools.Application.Services.Interfaces;
 using GenshinTools.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,17 +14,17 @@ public class UserWeaponsController : ControllerBase {
         _userWeaponService = userWeaponService;
     }
 
-    // POST: api/<UserWeaponsController>/link/1/2
-    [HttpPost("w/link/{userId}/{weaponId}")]
-    public async Task<ActionResult> AssociateWeaponToUser([FromRoute] string userId, [FromRoute] int weaponId) {
-        await _userWeaponService.AssociateWeaponToUser(userId, weaponId);
+    // POST: api/<UserWeaponsController>/link/
+    [HttpPost("link/")]
+    public async Task<ActionResult> AssociateWeaponToUser([FromBody] UserWeaponDTO model) {
+        await _userWeaponService.AssociateWeaponToUser(model);
         return Ok();
     }
 
-    // POST: api/<UserWeaponsController>/unlink/1/2
-    [HttpPost("w/unlink/{userId}/{weaponId}")]
-    public async Task<ActionResult> DisassociateWeaponToUser([FromRoute] string userId, [FromRoute] int weaponId) {
-        await _userWeaponService.DisassociateWeaponToUser(userId, weaponId);
+    // POST: api/<UserWeaponsController>/unlink/
+    [HttpPost("unlink/")]
+    public async Task<ActionResult> DisassociateWeaponToUser([FromBody] UserWeaponDTO model) {
+        await _userWeaponService.DisassociateWeaponToUser(model);
         return Ok();
     }
 

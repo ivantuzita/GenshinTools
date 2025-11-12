@@ -1,4 +1,5 @@
-﻿using GenshinTools.Application.Services.Interfaces;
+﻿using GenshinTools.Application.DTOs;
+using GenshinTools.Application.Services.Interfaces;
 using GenshinTools.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 namespace GenshinTools.API.Controllers;
@@ -13,17 +14,17 @@ public class UserCharactersController : ControllerBase {
         _userCharacterService = userCharacterService;
     }
 
-    // POST: api/<UserCharactersController>/link/1/2
-    [HttpPost("c/link/{userId}/{charId}")]
-    public async Task<ActionResult> AssociateCharacterToUser([FromRoute] string userId, [FromRoute] int charId) {
-        await _userCharacterService.AssociateCharacterToUser(userId, charId);
+    // POST: api/<UserCharactersController>/link/
+    [HttpPost("link")]
+    public async Task<ActionResult> AssociateCharacterToUser([FromBody] UserCharacterDTO model) {
+        await _userCharacterService.AssociateCharacterToUser(model);
         return Ok();
     }
 
-    // POST: api/<UserCharactersController>/unlink/1/2
-    [HttpPost("c/unlink/{userId}/{charId}")]
-    public async Task<ActionResult> DisassociateCharacterToUser([FromRoute] string userId, [FromRoute] int charId) {
-        await _userCharacterService.DisassociateCharacterToUser(userId, charId);
+    // POST: api/<UserCharactersController>/unlink
+    [HttpPost("unlink")]
+    public async Task<ActionResult> DisassociateCharacterToUser([FromBody] UserCharacterDTO model) {
+        await _userCharacterService.DisassociateCharacterToUser(model);
         return Ok();
     }
 

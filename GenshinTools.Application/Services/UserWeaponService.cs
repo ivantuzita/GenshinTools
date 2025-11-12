@@ -1,56 +1,62 @@
-﻿using GenshinTools.Application.Exceptions;
+using GenshinTools.Application.DTOs;
+using GenshinTools.Application.Exceptions;
 using GenshinTools.Application.Services.Interfaces;
 using GenshinTools.Domain.Interfaces;
 using GenshinTools.Domain.Models;
+using GenshinTools.Domain.Models.Identity;
 
 namespace GenshinTools.Application.Services;
 public class UserWeaponService : IUserWeaponService {
 
     private readonly IUserWeaponRepository _repository;
     private readonly IGenericRepository<Weapon> _weaponRepo;
-
-    public UserWeaponService(IUserWeaponRepository repository,
-        IGenericRepository<Weapon> weaponRepo)
-    {
+    private readonly IGenericRepository<User> _userRepo;
+    public UserWeaponService(IUserWeaponRepository repository, IGenericRepository<Weapon> weaponRepo, IGenericRepository<User> userRepo) {
         _weaponRepo = weaponRepo;
         _repository = repository;
+        _userRepo = userRepo;
     }
 
-    public async Task AssociateWeaponToUser(string userId, int weaponId)
+    public async Task AssociateWeaponToUser(UserWeaponDTO model)
     {
-        var weaponExists = _weaponRepo.GetByIdAsync(weaponId);
+        var userExists = await _userRepo.GetByIdAsync(int.Parse(model.UserId));
+
+        if (userExists == null)
+            throw new NotFoundException($"User has not been found.");
+
+        var weaponExists = await _weaponRepo.GetByIdAsync(model.WeaponId);
 
         if (weaponExists == null)
-        {
-            throw new NotFoundException($"Weapon with id {weaponId} has not been found.");
-        }
+            throw new NotFoundException($"Weapon with id {model.WeaponId} has not been found.");
 
-        var alreadyAssociated = await _repository.AlreadyAssociated(userId, weaponId);
+        var alreadyAssociated = await _repository.AlreadyAssociated(model.UserId, model.WeaponId);
 
-        if (alreadyAssociated) {
-            throw new BadRequestException($"Weapon with id {weaponId} is already associated with user id {userId}.");
-        }
+        if (alreadyAssociated)
+            throw new BadRequestException($"Weapon with id {model.WeaponId} is already associated with user.");
 
-        await _repository.AssociateWeaponToUser(userId, weaponId);
+        await _repository.AssociateWeaponToUser(model.UserId, model.WeaponId);
     }
 
-    public async Task DisassociateWeaponToUser(string userId, int weaponId)
+    public async Task DisassociateWeaponToUser(UserWeaponDTO model)
     {
-        var weaponExists = _weaponRepo.GetByIdAsync(weaponId);
+        var userExists = await _userRepo.GetByIdAsync(int.Parse(model.UserId));
+
+        if (userExists == null)
+            throw new NotFoundException($"User has not been found.");
+
+        var weaponExists = await _weaponRepo.GetByIdAsync(model.WeaponId);
 
         if (weaponExists == null)
-        {
-            throw new NotFoundException($"Weapon with id {weaponId} has not been found.");
-        }
+            throw new NotFoundException($"Weapon with id {model.WeaponId} has not been found.");
 
-        var alreadyAssociated = await _repository.AlreadyAssociated(userId, weaponId);
+        var alreadyAssociated = await _repository.AlreadyAssociated(model.UserId, model.WeaponId);
 
         if (!alreadyAssociated)
         {
-            throw new BadRequestException($"Weapon with id {weaponId} is not associated with user id {userId}.");
+            throw new BadRequestException($"Weapon with id {model.WeaponId} is not associated with user.");
         }
 
-        await _repository.DisassociateWeaponToUser(userId, weaponId);
+        await _repository.DisassociateWeaponToUser(model.UserId, model.WeaponId);
     }
 
     public async Task<List<Weapon>> GetUserWeapons(string userId)

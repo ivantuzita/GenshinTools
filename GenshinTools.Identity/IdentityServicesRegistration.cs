@@ -21,8 +21,7 @@ public static class IdentityServicesRegistration
         services.Configure<JwtSettings>(configuration.GetSection("JwtSettings"));
 
         services.AddDbContext<GenshinIdentityDbContext>(options => {
-            options.UseMySql(configuration.GetConnectionString("GenshinIdentityConnectionString"), ServerVersion.AutoDetect(
-                configuration.GetConnectionString("GenshinIdentityConnectionString")));
+            options.UseSqlServer(configuration.GetConnectionString("GenshinIdentityConnectionString"));
         });
 
         services.AddIdentity<ApplicationUser, IdentityRole>()

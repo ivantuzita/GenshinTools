@@ -1,4 +1,5 @@
-﻿using GenshinTools.Application.Services.Interfaces;
+﻿using GenshinTools.Application.Exceptions;
+using GenshinTools.Application.Services.Interfaces;
 using GenshinTools.Domain.Interfaces;
 using GenshinTools.Domain.Models;
 
@@ -26,5 +27,4 @@ public class CharacterService : ICharacterService {
         var result = await _repository.GetByIdAsync(id);
         return result;
     }
-
 }
