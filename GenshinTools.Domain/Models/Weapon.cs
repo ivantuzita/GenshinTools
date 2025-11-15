@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace GenshinTools.Domain.Models;
-public class Character {
+namespace GenshinTools.Domain.Models; 
+public class Weapon {
     [Key]
     [Required]
     public int Id { get; set; }

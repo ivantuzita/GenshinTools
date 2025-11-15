@@ -49,7 +49,8 @@ public class UserCharacterRepository : IUserCharacterRepository {
     public async Task<List<Character>> GetUserCharactersFiltered(string userId) {
         var chars = await GetUserCharacters(userId);
         var filter = (from c in chars
-                      let days = c.WeekDays.Split(',').Select(x => int.Parse(x))
+                      join tm in _context.TalentMaterials on c.Id equals tm.Id
+                      let days = tm.WeekDays.Split(',').Select(x => int.Parse(x))
                       where days.Contains(DateHelper.GetCurrentDayOfWeek())
                       select c).ToList();
 

@@ -6,8 +6,7 @@ using GenshinTools.Domain.Common.Helpers;
 
 namespace GenshinTools.Persistence.Repositories;
 
-public class UserWeaponRepository : IUserWeaponRepository
-{
+public class UserWeaponRepository : IUserWeaponRepository {
     protected readonly GenshinDatabaseContext _context;
 
     public UserWeaponRepository(GenshinDatabaseContext context) {
@@ -20,8 +19,7 @@ public class UserWeaponRepository : IUserWeaponRepository
                       select uw).AnyAsync();
     }
 
-    public async Task AssociateWeaponToUser(string userId, int weaponId)
-    {
+    public async Task AssociateWeaponToUser(string userId, int weaponId) {
         UserWeapon userWeapon = new UserWeapon { UserId = userId, WeaponId = weaponId };
         await _context.AddAsync(userWeapon);
         await _context.SaveChangesAsync();
@@ -40,9 +38,9 @@ public class UserWeaponRepository : IUserWeaponRepository
     }
     public async Task<List<Weapon>> GetUserWeapons(string userId) {
         var weapons = await (from uw in _context.UserWeapons
-                              join w in _context.Weapons on uw.WeaponId equals w.Id
-                              where uw.UserId == userId
-                              select w).ToListAsync();
+                             join w in _context.Weapons on uw.WeaponId equals w.Id
+                             where uw.UserId == userId
+                             select w).ToListAsync();
         return weapons;
     }
 
@@ -51,7 +49,8 @@ public class UserWeaponRepository : IUserWeaponRepository
 
         //selects todays weapons
         var filter = (from w in weapons
-                      let days = w.WeekDays.Split(',').Select(x => int.Parse(x))
+                      join tm in _context.TalentMaterials on w.Id equals tm.Id
+                      let days = tm.WeekDays.Split(',').Select(x => int.Parse(x))
                       where days.Contains(DateHelper.GetCurrentDayOfWeek())
                       select w).ToList();
 

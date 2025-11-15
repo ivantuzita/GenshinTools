@@ -9,7 +9,7 @@ namespace GenshinTools.Persistence;
 public static class PersistenceServiceRegistration {
     public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration configuration) {
         services.AddDbContext<GenshinDatabaseContext>(options => {
-            options.UseSqlServer(configuration.GetConnectionString("GenshinConnectionString"));
+            options.UseSqlite(configuration.GetConnectionString("GenshinConnectionString"));
     }, ServiceLifetime.Transient);
 
         services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
