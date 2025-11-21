@@ -28,15 +28,15 @@ public class UserCharactersController : ControllerBase {
         return Ok();
     }
 
-    // GET api/<UserCharactersController>/2
-    [HttpGet("c/{userId}")]
-    public async Task<ActionResult<List<Character>>> GetUserCharacters([FromRoute] string userId) {
+    // GET api/<UserCharactersController>/get-user-characters?userId=2
+    [HttpGet("get-user-characters")]
+    public async Task<ActionResult<List<Character>>> GetUserCharacters(string userId) {
         var chars = await _userCharacterService.GetUserCharacters(userId);
         return Ok(chars);
     }
 
-    // GET api/<UserCharactersController>/filter/2
-    [HttpGet("c/filter/{userId}")]
+    // GET api/<UserCharactersController>/get-filtered-user-characters?userId=2
+    [HttpGet("get-filtered-user-characters")]
     public async Task<ActionResult<List<Character>>> GetUserCharactersFiltered([FromRoute] string userId) {
         var chars = await _userCharacterService.GetUserCharactersFiltered(userId);
         return Ok(chars);

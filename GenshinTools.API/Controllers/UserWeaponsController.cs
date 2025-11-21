@@ -29,15 +29,15 @@ public class UserWeaponsController : ControllerBase {
     }
 
     // GET api/<UserWeaponsController>/2
-    [HttpGet("w/{userId}")]
-    public async Task<ActionResult<List<Weapon>>> GetUserWeapons([FromRoute] string userId) {
+    [HttpGet("get-user-weapons")]
+    public async Task<ActionResult<List<Weapon>>> GetUserWeapons(string userId) {
         var chars = await _userWeaponService.GetUserWeapons(userId);
         return Ok(chars);
     }
 
     // GET api/<UserWeaponsController>/filter/2
-    [HttpGet("w/filter/{userId}")]
-    public async Task<ActionResult<List<Weapon>>> GetUserWeaponsFiltered([FromRoute] string userId) {
+    [HttpGet("get-filtered-user-weapons")]
+    public async Task<ActionResult<List<Weapon>>> GetUserWeaponsFiltered(string userId) {
         var chars = await _userWeaponService.GetUserWeaponsFiltered(userId);
         return Ok(chars);
     }
